@@ -1,0 +1,145 @@
+<resources>
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:background">@null</item>
+
+
+        <!--<item name="android:windowBackground">@drawable/common_layout_content_bkg</item>-->
+
+        <item name="searchViewStyle">@style/SearchViewStyle</item>
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+
+        <item name="textInputStyle">@style/textinputstyle</item>
+
+        <!--        <item name="md_corner_radius">8dp</item>-->
+
+        <!--        <item name="android:dropDownSpinnerStyle">@style/SpinnerTheme</item>-->
+    </style>
+
+    <style name="MineCustomTabText" parent="TextAppearance.Design.Tab">
+        <item name="android:textSize">18sp</item>
+    </style>
+
+
+    <style name="NewDialog">
+        <item name="android:windowFrame">@null</item>
+        <item name="android:windowBackground">@android:color/transparent</item>
+        <item name="android:windowIsFloating">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+        <item name="android:windowTitleStyle">@null</item>
+        <item name="android:windowAnimationStyle">@android:style/Animation.Dialog</item>
+        <item name="android:windowSoftInputMode">stateUnspecified|adjustPan</item>
+        <item name="android:backgroundDimEnabled">false</item>
+        <item name="android:background">@android:color/transparent</item>
+    </style>
+
+
+    <style name="SplashActivityStyle" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
+<!--        <item name="android:background">@drawable/ic_launch</item>-->
+    </style>
+
+    <!--    <style name="SplashActivityStyle2" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">-->
+    <!--        <item name="android:background">@drawable/ic_launch2</item>-->
+
+    <!--    </style>-->
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="RippleWhite">
+        <item name="android:colorControlHighlight">#FAFAFA</item>
+        <item name="android:radius">25dp</item>
+    </style>
+
+    <style name="AnimationFunction">
+        <item name="android:windowEnterAnimation">@anim/function_in</item>
+        <item name="android:windowExitAnimation">@anim/function_out</item>
+    </style>
+
+    <style name="AnimationChoice">
+        <item name="android:windowEnterAnimation">@anim/function_in</item>
+        <item name="android:windowExitAnimation">@anim/function_out</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+    <!--NavigationIcon和标题之间的距离-->
+    <style name="ToolbarStyle" parent="Base.Widget.AppCompat.Toolbar">
+        <item name="contentInsetStart">0dp</item>
+        <item name="contentInsetStartWithNavigation">0dp</item>
+        <item name="android:title">@null</item>
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
+        <!--<item name="searchIcon">@null</item>-->
+        <!--<item name="searchHintIcon">@null</item>-->
+<!--        <item name="android:textColorHint">@color/grey_ee</item>-->
+        <!--<item name="commitIcon">@drawable/ic_search</item>-->
+<!--        <item name="closeIcon">@drawable/ic_close_black_24dp</item>-->
+        <item name="android:iconifiedByDefault">false</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:editTextColor">@android:color/black</item>
+    </style>
+
+
+    <style name="textinputstyle" parent="Widget.Design.TextInputLayout">
+
+        <item name="android:colorBackground">@color/white</item>
+    </style>
+
+    <!--Toolbar标题文字大小-->
+    <style name="Toolbar.TitleText" parent="TextAppearance.Widget.AppCompat.Toolbar.Title">
+        <item name="android:textSize">20sp</item>
+    </style>
+
+
+    <style name="progressStyle" parent="Widget.AppCompat.ProgressBar">
+        <item name="android:indeterminate">true</item>
+        <item name="android:color">@color/white</item>
+        <item name="android:indeterminateTint">@color/white</item>
+        <item name="android:indeterminateTintMode">src_in</item>
+
+    </style>
+
+
+
+
+    <style name="TabDaoHang" parent="Widget.MaterialComponents.TabLayout">
+        <item name="tabTextColor">@color/white</item>
+        <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
+    </style>
+
+    <style name="MyTabTextAppearance" parent="TextAppearance.AppCompat.Button">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="textAllCaps">true</item>
+    </style>
+
+
+    <style name="MyTabLayoutTextAppearance" parent="TextAppearance.AppCompat.Medium">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+</resources>

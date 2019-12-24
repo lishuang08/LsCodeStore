@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+
+    <!--http status 1xx (临时响应) 表示临时响应并需要请求者继续执行操作的状态码-->
+    <string name="code_100">继续</string>
+    <string name="code_101">切换协议</string>
+
+    <!--http status 2xx (成功) 表示成功处理了请求的状态码-->
+    <string name="code_200">成功</string>
+    <string name="code_201">已创建</string>
+    <string name="code_202">已接受</string>
+    <string name="code_203">非授权信息</string>
+    <string name="code_204">无内容</string>
+    <string name="code_205">重置内容</string>
+    <string name="code_206">部分内容</string>
+
+    <!--http status 4xx (请求错误) 表示请求可能出错，妨碍了服务器的处理-->
+    <string name="code_400">错误请求</string>
+    <string name="code_401">未授权</string>
+    <string name="code_403">服务器拒绝请求</string>
+    <string name="code_404">服务器找不到请求的网页</string>
+    <string name="code_405">方法禁用</string>
+    <string name="code_406">无法使用请求的内容特性响应请求的网页</string>
+    <string name="code_407">需要代理授权</string>
+    <string name="code_408">请求超时</string>
+    <string name="code_409">服务器在完成请求时发生冲突</string>
+    <string name="code_410">已删除</string>
+    <string name="code_411">需要有效长度</string>
+    <string name="code_412">未满足前提条件</string>
+    <string name="code_413">请求实体过大</string>
+    <string name="code_414">请求的uri过长</string>
+    <string name="code_415">不支持媒体类型</string>
+    <string name="code_416">请求范围不符合要求</string>
+    <string name="code_417">未满足期望值</string>
+
+    <!--5xx (服务器错误) 服务器在尝试处理请求时发生内部错误。 这些错误可能是服务器本身的错误，而不是请求出错-->
+    <string name="code_500">服务器内部错误</string>
+    <string name="code_501">服务器不具备完成请求的功能</string>
+    <string name="code_502">错误网关</string>
+    <string name="code_503">服务不可用</string>
+    <string name="code_504">网关超时</string>
+    <string name="code_505">HTTP 版本不受支持</string>
+
+
+
+</resources>

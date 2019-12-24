@@ -1,0 +1,5 @@
+include ':basemodule'
+include ':secondmodule'
+include ':firstmodule'
+include ':app'
+rootProject.name = "LsCodeStore"

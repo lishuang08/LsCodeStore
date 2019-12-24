@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/first_navigation"
+    app:startDestination="@id/firstMainFragment">
+
+    <fragment
+        android:id="@+id/firstMainFragment"
+        android:name="cn.kaipuyun.firstmodule.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment" />
+    <deepLink
+        android:id="@+id/deepLink"
+        app:uri="yylx:https://ls.yylx.firstmodul" />
+</navigation>
