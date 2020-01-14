@@ -11,9 +11,10 @@ buildscript {
         google()
         jcenter()
         mavenCentral()
+//        maven { url "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.0.0-alpha07'
+        classpath 'com.android.tools.build:gradle:4.0.0-alpha08'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0'
     }
@@ -24,9 +25,12 @@ allprojects {
         maven { url 'https://maven.aliyun.com/repository/google' }
         maven { url 'https://maven.aliyun.com/repository/public' }
         maven { url "https://jitpack.io" }
+
+
         google()
         jcenter()
         mavenCentral()
+//        maven { url "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/" }
     }
 }
 

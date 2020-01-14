@@ -34,6 +34,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "flavor"
+    productFlavors {
+        debugUrl {
+            dimension "flavor"
+            versionNameSuffix "-测试"
+            applicationIdSuffix ".testUrl"
+
+            resValue "bool", "isModule", "$isModule"
+
+            manifestPlaceholders = [app_name: "出国境管理测试", app_icon: "@mipmap/ic_launcher"]
+        }
+
+        myrelease {
+            dimension "flavor"
+
+            resValue "bool", "isModule","$isModule"
+        }
+    }
+
 
     compileOptions {
         sourceCompatibility = "1.8"
@@ -47,4 +66,9 @@ android {
 
 dependencies {
     implementation project(':basemodule')
+
+    implementation project(':firstmodule')
+
+    implementation project(':secondmodule')
+
 }

@@ -3,15 +3,15 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/first_navigation"
-    app:startDestination="@id/firstMainFragment">
+    app:startDestination="@id/secondMainFragment">
 
     <fragment
-        android:id="@+id/firstMainFragment"
-        android:name="cn.kaipuyun.firstmodule.ui.main.MainFragment"
+        android:id="@+id/secondMainFragment"
+        android:name="cn.kaipuyun.secondmodule.ui.main.SecondFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" />
     <deepLink
         android:id="@+id/deepLink"
-        app:uri="yylx:ls.yylx.firstmodul" />
+        app:uri="yylx:ls.yylx.secondmodul" />
 
 </navigation>

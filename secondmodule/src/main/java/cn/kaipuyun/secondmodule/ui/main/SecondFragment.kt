@@ -7,10 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import cn.kaipuyun.secondmodule.R
 
-class MainFragment : Fragment() {
+class SecondFragment : Fragment() {
 
     companion object {
-        fun newInstance() = MainFragment()
+        fun newInstance() = SecondFragment()
     }
 
 
