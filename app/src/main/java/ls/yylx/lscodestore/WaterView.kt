@@ -83,7 +83,7 @@ class WaterView(ctx: Context, attributeSet: AttributeSet?) : View(ctx, attribute
     override fun onDraw(canvas: Canvas?) {
         super.onDraw(canvas)
 
-        canvas?.drawBitmap(bufferBmp!!, 0f, 0f, null)
+//        canvas?.drawBitmap(bufferBmp!!, 0f, 0f, null)
     }
 
 

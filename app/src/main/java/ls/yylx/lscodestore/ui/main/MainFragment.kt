@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
+import cn.kaipuyun.basemodule.Solution.dailyTemperatures
+import com.orhanobut.logger.Logger
 import ls.yylx.lscodestore.PageAdapterJob
 import ls.yylx.lscodestore.WaterView
 import org.jetbrains.anko.custom.customView
@@ -26,62 +28,71 @@ class MainFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         return UI {
-            nestedScrollView {
-                frameLayout {
-                    recyclerView {
-                        adapter = PageAdapterJob().apply {
-                            items = listOf(
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "aaaaaaaa",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb",
-                                "bbbbbbbb"
-                            )
-                        }
-                        layoutManager = LinearLayoutManager(requireContext())
-                    }.lparams(matchParent, matchParent)
-                    customView<WaterView> {
-                        post {
-                            setNewText("水印 2111")
-                        }
-                    }.lparams(matchParent, matchParent)
-                }
-
+            frameLayout {
+//                frameLayout {
+//                    recyclerView {
+//                        adapter = PageAdapterJob().apply {
+//                            items = listOf(
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "aaaaaaaa",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb",
+//                                "bbbbbbbb"
+//                            )
+//                        }
+//                        layoutManager = LinearLayoutManager(requireContext())
+//                    }.lparams(matchParent, matchParent)
+//                    customView<WaterView> {
+//                        post {
+//                            setNewText("水印 2111")
+//                        }
+//                    }.lparams(matchParent, matchParent)
+//                }
+//
             }
         }.view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        Logger.e("a")
+
+       val back =  dailyTemperatures(intArrayOf(30,49,59,20))
+        println(back.asList())
     }
 
 
