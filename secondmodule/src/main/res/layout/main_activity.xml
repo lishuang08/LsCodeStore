@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".MainActivity">
+    tools:context=".SecondMainActivity">
 
     <fragment
         android:id="@+id/fragment_main"
@@ -13,5 +13,5 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         app:defaultNavHost="true"
-        app:navGraph="@navigation/first_navigation" />
+        app:navGraph="@navigation/second_navigation" />
 </LinearLayout>

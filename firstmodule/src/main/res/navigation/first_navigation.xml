@@ -12,5 +12,6 @@
         tools:layout="@layout/main_fragment" />
     <deepLink
         android:id="@+id/deepLink"
-        app:uri="yylx:https://ls.yylx.firstmodul" />
+        app:uri="yylx:ls.yylx.firstmodul" />
+
 </navigation>

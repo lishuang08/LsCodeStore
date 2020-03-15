@@ -1,14 +1,20 @@
 package ls.yylx.lscodestore
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import ls.yylx.lscodestore.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+import cn.kaipuyun.basemodule.BuildConfig
 
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        if (!resources.getBoolean(R.bool.isModule)){
+            setContentView(R.layout.main_activity)
+        }else {
+            setContentView(R.layout.main_activity_relase)
+        }
+
+
 
     }
 }

@@ -34,6 +34,25 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "flavor"
+    productFlavors {
+        debugUrl {
+            dimension "flavor"
+            versionNameSuffix "-测试"
+            applicationIdSuffix ".testUrl"
+
+            resValue "bool", "isModule", "$isModule"
+
+            manifestPlaceholders = [app_name: "出国境管理测试", app_icon: "@mipmap/ic_launcher"]
+        }
+
+        myrelease {
+            dimension "flavor"
+
+            resValue "bool", "isModule","$isModule"
+        }
+    }
+
 
     compileOptions {
         sourceCompatibility = "1.8"
@@ -42,9 +61,29 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+
+    /**加快编译速度*/
+    tasks.whenTaskAdded { task ->
+        if (task.name.contains("lint")
+                || task.name.equals("clean")
+                || task.name.contains("Aidl")
+                || task.name.contains("mockableAndroidJar")
+                || task.name.contains("UnitTest")
+                || task.name.contains("AndroidTest")
+//                || task.name.contains("Ndk")
+//                || task.name.contains("Jni")
+        ) {
+            task.enabled = false
+        }
+    }
 }
 
 
 dependencies {
     implementation project(':basemodule')
+
+    implementation project(':firstmodule')
+
+    implementation project(':secondmodule')
+
 }
