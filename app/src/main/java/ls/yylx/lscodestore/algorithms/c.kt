@@ -42,17 +42,17 @@ fun addTwoNumbers(l1: ListNode?, l2: ListNode?): ListNode? {
 }
 
 
-fun maxProfit(prices: IntArray): Int {
-    var max = 0
-    val linklist = LinkedList<Int>().apply {
-        add(Int.MAX_VALUE)
-        addLast(Int.MIN_VALUE)
-    }
-
-    prices.forEach {
-
-    }
-}
+//fun maxProfit(prices: IntArray): Int {
+//    var max = 0
+//    val linklist = LinkedList<Int>().apply {
+//        add(Int.MAX_VALUE)
+//        addLast(Int.MIN_VALUE)
+//    }
+//
+//    prices.forEach {
+//
+//    }
+//}
 
 class TreeNode(var `val`: Int) {
     var left: TreeNode? = null

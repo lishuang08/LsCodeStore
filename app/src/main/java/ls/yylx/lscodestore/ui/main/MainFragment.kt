@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.recyclerview.widget.LinearLayoutManager
-import cn.kaipuyun.basemodule.Solution.dailyTemperatures
 import com.orhanobut.logger.Logger
 import ls.yylx.lscodestore.PageAdapterJob
 import ls.yylx.lscodestore.WaterView
@@ -91,8 +90,6 @@ class MainFragment : Fragment() {
 
         Logger.e("a")
 
-       val back =  dailyTemperatures(intArrayOf(30,49,59,20))
-        println(back.asList())
     }
 
 

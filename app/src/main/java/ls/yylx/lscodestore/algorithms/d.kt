@@ -89,15 +89,15 @@ class d {
         return nums[0]
     }
 
-    fun lengthOfLIS(nums: IntArray?): Int {
-        val hashMap = HashMap<Int, Int>()
-
-        nums?.forEachIndexed { index, i ->
-
-
-        }
-
-    }
+//    fun lengthOfLIS(nums: IntArray?): Int {
+//        val hashMap = HashMap<Int, Int>()
+//
+//        nums?.forEachIndexed { index, i ->
+//
+//
+//        }
+//
+//    }
 
 
     fun compressString(S: String): String {
