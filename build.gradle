@@ -14,7 +14,7 @@ buildscript {
 //        maven { url "https://ci.android.com/builds/submitted/6043188/androidx_snapshot/latest/repository/" }
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.1.0-alpha02'
+        classpath 'com.android.tools.build:gradle:4.1.0-alpha03'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         classpath 'androidx.navigation:navigation-safe-args-gradle-plugin:2.1.0'
     }
