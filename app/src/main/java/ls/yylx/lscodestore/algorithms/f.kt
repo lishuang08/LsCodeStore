@@ -93,26 +93,26 @@ class f {
     }
 
 
-    fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
-        val total = nums1.size + nums2.size
-
-        var p1 = nums1.size / 2
-        var p2 = nums2.size / 2
-        if (total % 2 == 0) {
-            val left = total / 2
-            if (nums1.isEmpty()) return (nums2[left - 1] + nums2[left]) / 2.0
-            if (nums2.isEmpty()) return (nums1[left - 1] + nums1[left]) / 2.0
-
-            while ((p1 + p2) != left+1) {
-
-            }
-
-        } else {
-
-        }
-
-
-    }
+//    fun findMedianSortedArrays(nums1: IntArray, nums2: IntArray): Double {
+//        val total = nums1.size + nums2.size
+//
+//        var p1 = nums1.size / 2
+//        var p2 = nums2.size / 2
+//        if (total % 2 == 0) {
+//            val left = total / 2
+//            if (nums1.isEmpty()) return (nums2[left - 1] + nums2[left]) / 2.0
+//            if (nums2.isEmpty()) return (nums1[left - 1] + nums1[left]) / 2.0
+//
+//            while ((p1 + p2) != left+1) {
+//
+//            }
+//
+//        } else {
+//
+//        }
+//
+//
+//    }
 
 
 }

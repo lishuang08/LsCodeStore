@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">SecondModule</string>
+    <string name="base_url">http://base_url</string>
 </resources>

@@ -6,13 +6,15 @@ import android.app.Application
 import android.content.Context
 import android.os.Process
 import androidx.room.Room
-import com.jeremyliao.liveeventbus.LiveEventBus
+import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.scwang.smart.refresh.header.MaterialHeader
 import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
 import com.tencent.mmkv.MMKVLogLevel
+import com.tencent.smtt.sdk.QbSdk
+import ls.yylx.lscodestore.db.RoomDb
 import kotlin.properties.Delegates
 
 
@@ -45,7 +47,7 @@ class MyApp : Application() {
     private fun initLibrary() {
 
         if (BuildConfig.DEBUG) {
-//            DoraemonKit.install(this )
+            DoraemonKit.install(this)
         }
 
 
@@ -60,25 +62,37 @@ class MyApp : Application() {
 
 //        LiveEventBus.get().config()
 
-//        appDb = Room.databaseBuilder(
-//            applicationContext,
-//            AppDatabase::class.java, "aaaaa.db"
-//        ).allowMainThreadQueries()
-//            .fallbackToDestructiveMigration()
-//            .build()
-
 
 //        CrashReport.initCrashReport(getApplicationContext(), "", true)
+
+
+        //x5内核初始化接口
+        QbSdk.initX5Environment(applicationContext, object : QbSdk.PreInitCallback {
+            override fun onViewInitFinished(arg0: Boolean) {
+
+                Logger.d("app", " onViewInitFinished is $arg0")
+            }
+
+            override fun onCoreInitFinished() {
+
+            }
+        })
     }
 
 
     companion object {
         lateinit var instance: MyApp
-        //        if (this::instance::isInitialized.get())
-//        lateinit var boxStore: BoxStore
 
 
-//        lateinit var appDb: AppDatabase
+        val appDb by lazy {
+            Room.databaseBuilder(
+                instance,
+                RoomDb::class.java, "lscodes.db"
+            ).allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build()
+        }
+
         var cookie: String? = null
 
         var token: String? = null

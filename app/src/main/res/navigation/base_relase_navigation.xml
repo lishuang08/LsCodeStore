@@ -9,14 +9,26 @@
         android:id="@+id/mainFragment"
         android:name="ls.yylx.lscodestore.ui.main.MainFragment"
         android:label="main_fragment"
-        tools:layout="@layout/main_fragment" >
+        tools:layout="@layout/main_fragment">
         <action
             android:id="@+id/action_mainFragment_to_first_navigation"
             app:destination="@id/first_navigation" />
+        <action
+            android:id="@+id/action_mainFragment_to_x5WebViewFragment"
+            app:destination="@id/x5WebViewFragment" />
     </fragment>
 
 
     <include app:graph="@navigation/first_navigation" />
+    <fragment
+        android:id="@+id/x5WebViewFragment"
+        android:name="ls.yylx.lscodestore.webview.X5WebViewFragment"
+        android:label="X5WebViewFragment" />
+
+    <fragment
+        android:id="@+id/choiceImageFragment"
+        android:name="ls.yylx.lscodestore.tool.ChoiceImageFragment"
+        android:label="ChoiceImageFragment" />
 
 
 </navigation>

@@ -7,11 +7,11 @@
 
     <fragment
         android:id="@+id/secondMainFragment"
-        android:name="cn.kaipuyun.secondmodule.ui.main.SecondFragment"
+        android:name="ls.yylx.lscodestore.secondmodule.ui.SecondFragment"
         android:label="main_fragment"
         tools:layout="@layout/main_fragment" />
     <deepLink
-        android:id="@+id/deepLink"
+        android:id="@+id/deepLink_second"
         app:uri="yylx:ls.yylx.secondmodul" />
 
 </navigation>

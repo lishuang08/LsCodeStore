@@ -1,4 +1,5 @@
 <resources>
+
     <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
@@ -41,7 +42,7 @@
 
 
     <style name="SplashActivityStyle" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">
-<!--        <item name="android:background">@drawable/ic_launch</item>-->
+        <!--        <item name="android:background">@drawable/ic_launch</item>-->
     </style>
 
     <!--    <style name="SplashActivityStyle2" parent="Theme.AppCompat.Light.NoActionBar.FullScreen">-->
@@ -71,9 +72,6 @@
         <item name="android:windowExitAnimation">@anim/function_out</item>
     </style>
 
-    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
-
-    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
 
     <!--NavigationIcon和标题之间的距离-->
     <style name="ToolbarStyle" parent="Base.Widget.AppCompat.Toolbar">
@@ -86,9 +84,9 @@
     <style name="SearchViewStyle" parent="Widget.AppCompat.SearchView">
         <!--<item name="searchIcon">@null</item>-->
         <!--<item name="searchHintIcon">@null</item>-->
-<!--        <item name="android:textColorHint">@color/grey_ee</item>-->
+        <!--        <item name="android:textColorHint">@color/grey_ee</item>-->
         <!--<item name="commitIcon">@drawable/ic_search</item>-->
-<!--        <item name="closeIcon">@drawable/ic_close_black_24dp</item>-->
+        <!--        <item name="closeIcon">@drawable/ic_close_black_24dp</item>-->
         <item name="android:iconifiedByDefault">false</item>
         <item name="android:textColor">@color/black</item>
         <item name="android:editTextColor">@android:color/black</item>
@@ -115,8 +113,6 @@
     </style>
 
 
-
-
     <style name="TabDaoHang" parent="Widget.MaterialComponents.TabLayout">
         <item name="tabTextColor">@color/white</item>
         <item name="tabTextAppearance">@style/MyTabTextAppearance</item>
@@ -135,11 +131,10 @@
         <item name="android:textStyle">bold</item>
     </style>
 
-
-
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <style name="Widget.AppTheme.MyView" parent="">
+        <item name="android:background">@color/gray_400</item>
+        <item name="exampleColor">@color/light_blue_400</item>
     </style>
+
 
 </resources>

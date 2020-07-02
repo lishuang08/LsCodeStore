@@ -8,15 +8,15 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
 
     defaultConfig {
         if (!isModule) {
-            applicationId "cn.kaipuyun.secondmodule"
+            applicationId "ls.yylx.lscodestore.secondmodule"
         }
 
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
