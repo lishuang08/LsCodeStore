@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/ml_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layoutDescription="@xml/sence_01"
+    tools:showPaths="true">
+
+<!--    <Space-->
+<!--        android:id="@+id/space_main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="176dp"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent" />-->
+
+<!--    <androidx.viewpager2.widget.ViewPager2-->
+<!--        android:id="@+id/vp2_main"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/nvs_main_0"-->
+<!--        app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--    <LinearLayout-->
+<!--        android:id="@+id/lnt_weeather"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_margin="8dp"-->
+<!--        android:padding="16dp"-->
+<!--        android:visibility="gone"-->
+<!--        app:layout_constraintStart_toStartOf="@+id/vp2_main"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/vp2_main">-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/tv_weather"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="拉萨市"-->
+<!--            android:textColor="@color/white" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+
+<!--        <TextView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text=""-->
+<!--            android:textColor="@color/white" />-->
+
+<!--        <ImageView-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content" />-->
+<!--    </LinearLayout>-->
+
+<!--    <com.google.android.material.tabs.TabLayout-->
+<!--        android:id="@+id/tab_main"-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="16dp"-->
+<!--        android:background="@null"-->
+<!--        android:layout_marginBottom="8dp"-->
+<!--        android:minWidth="64dp"-->
+<!--        app:layout_constraintBottom_toBottomOf="@+id/vp2_main"-->
+<!--        app:layout_constraintEnd_toEndOf="parent"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:tabBackground="@drawable/selector_tab_indicator_dot"-->
+<!--        app:tabGravity="center"-->
+<!--        app:tabIndicator="@null"-->
+<!--        app:tabPaddingEnd="8dp"-->
+<!--        app:tabPaddingStart="8dp" />-->
+
+
+
+<!--    <androidx.appcompat.widget.AppCompatImageView-->
+<!--        android:id="@+id/iv_down"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="16dp"-->
+<!--        android:background="@drawable/bg_arrow_white"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/nvs_main_0"-->
+<!--        app:layout_constraintTop_toTopOf="@+id/space_main"-->
+<!--        app:srcCompat="@drawable/ic_line" />-->
+
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:id="@+id/nvs_main_0"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="56dp"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintBottom_toTopOf="@+id/nvs_main_2"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/iv_down">-->
+
+<!--        <FrameLayout-->
+<!--            android:id="@+id/fl_main_search"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="40dp"-->
+<!--            android:layout_marginStart="16dp"-->
+<!--            android:layout_marginTop="8dp"-->
+<!--            android:layout_marginEnd="16dp"-->
+<!--            android:layout_marginBottom="8dp"-->
+<!--            android:background="@drawable/bg_search_main"-->
+<!--            android:foreground="?attr/selectableItemBackgroundBorderless"-->
+
+<!--            android:orientation="horizontal"-->
+<!--            app:layout_constraintBottom_toTopOf="@id/nvs_main_2"-->
+<!--            app:layout_constraintTop_toBottomOf="@+id/iv_down">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/iv_search"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:padding="12dp"-->
+<!--                android:src="@drawable/ic_search" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tv_search"-->
+<!--                android:layout_width="wrap_content"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_marginStart="40dp"-->
+<!--                android:foreground="?attr/selectableItemBackgroundBorderless"-->
+<!--                android:gravity="center_vertical"-->
+<!--                android:text="搜索" />-->
+
+<!--            <androidx.appcompat.widget.AppCompatImageView-->
+<!--                android:id="@+id/iv_qr"-->
+<!--                android:layout_width="40dp"-->
+<!--                android:layout_height="40dp"-->
+<!--                android:layout_gravity="end"-->
+<!--                android:padding="12dp"-->
+<!--                app:srcCompat="@drawable/ic_qr" />-->
+<!--        </FrameLayout>-->
+
+<!--    </androidx.core.widget.NestedScrollView>-->
+
+<!--    <androidx.core.widget.NestedScrollView-->
+<!--        android:id="@+id/nvs_main_2"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="0dp"-->
+<!--        android:background="@color/white"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintTop_toBottomOf="@+id/nvs_main_0">-->
+
+
+<!--        <LinearLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:orientation="vertical">-->
+
+<!--            <androidx.recyclerview.widget.RecyclerView-->
+<!--                android:id="@+id/rv_main_top"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="72dp"-->
+<!--                android:layout_marginTop="8dp"-->
+
+<!--                app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"-->
+<!--                app:spanCount="4" />-->
+
+
+<!--            <include-->
+<!--                android:id="@+id/main2"-->
+<!--                layout="@layout/fragment_main2"-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:visibility="visible" />-->
+
+<!--        </LinearLayout>-->
+<!--    </androidx.core.widget.NestedScrollView>-->
+</androidx.constraintlayout.motion.widget.MotionLayout>

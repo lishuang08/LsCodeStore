@@ -3,32 +3,12 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/base_navigation"
-    app:startDestination="@id/mainFragment">
-
-    <fragment
-        android:id="@+id/mainFragment"
-        android:name="ls.yylx.lscodestore.ui.main.MainFragment"
-        android:label="main_fragment"
-        tools:layout="@layout/main_fragment">
-        <action
-            android:id="@+id/action_mainFragment_to_first_navigation"
-            app:destination="@id/first_navigation" />
-        <action
-            android:id="@+id/action_mainFragment_to_x5WebViewFragment"
-            app:destination="@id/x5WebViewFragment" />
-    </fragment>
+    app:startDestination="@id/main_navigation">
 
 
-    <include app:graph="@navigation/first_navigation" />
-    <fragment
-        android:id="@+id/x5WebViewFragment"
-        android:name="ls.yylx.lscodestore.webview.X5WebViewFragment"
-        android:label="X5WebViewFragment" />
-
-    <fragment
-        android:id="@+id/choiceImageFragment"
-        android:name="ls.yylx.lscodestore.tool.ChoiceImageFragment"
-        android:label="ChoiceImageFragment" />
-
+    <include app:graph="@navigation/tab1_navigation" />
+    <include app:graph="@navigation/tab2_navigation" />
+    <include app:graph="@navigation/tab3_navigation" />
+    <include app:graph="@navigation/main_navigation" />
 
 </navigation>

@@ -1,15 +1,14 @@
 package ls.yylx.lscodestore.db
 
-import androidx.sqlite.db.SupportSQLiteDatabase
+import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
 import androidx.room.TypeConverters
-import android.content.Context
 
 
-@Database(entities = [Specie::class], version = 10)
-@TypeConverters(Converters::class)
+@Database(entities = [Specie::class], version = 4)
+//@TypeConverters(Converters::class)
 abstract class RoomDb : RoomDatabase() {
     abstract fun gbifDao(): GbifDao
 
@@ -19,19 +18,16 @@ abstract class RoomDb : RoomDatabase() {
 
     companion object {
         private var instance: RoomDb? = null
+
         @Synchronized
         fun get(context: Context): RoomDb {
             if (instance == null) {
-                instance = Room.databaseBuilder(context.applicationContext, RoomDb::class.java, "ls")
-                        .addCallback(object : RoomDatabase.Callback() {
-                            override fun onCreate(db: SupportSQLiteDatabase) {
-
-                            }
-                        })
-                        .allowMainThreadQueries()//允许主线程查询
-//                        .addMigrations(MIGRATION_update)//更新策略
-                        .fallbackToDestructiveMigration()//版本更新清空数据库
-                        .build()
+                instance = Room.databaseBuilder(
+                    context.applicationContext,
+                    RoomDb::class.java, "lscode.db"
+                ).allowMainThreadQueries()
+                    .fallbackToDestructiveMigration()
+                    .build()
             }
             return instance!!
         }

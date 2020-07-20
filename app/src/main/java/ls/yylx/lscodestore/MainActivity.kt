@@ -2,17 +2,22 @@ package ls.yylx.lscodestore
 
 import android.content.Intent
 import android.os.Bundle
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
+import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.basemodule.PermissionManager
+import ls.yylx.lscodestore.ui.coroutines.viewmodel.GbifRoomViewModel
+import ls.yylx.lscodestore.viewmodel.GbifViewModel
 import java.nio.charset.Charset
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
+    val gbifVm  by viewModels<GbifViewModel> ()
 
     val navController by lazy {
         findNavController(R.id.fragment_main_relase)
@@ -27,7 +32,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity_relase)
 
-
+        gbifVm.UpdateSpecies()
 
 //        if (resources.getBoolean(R.bool.isModule)) {
 //            setContentView(R.layout.main_activity_relase)
@@ -137,5 +142,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         )
         PermissionManager.onRequestPermissionsResult(requestCode, grantResults)
     }
+
+
+
 
 }

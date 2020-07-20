@@ -36,12 +36,16 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-        <activity
-            android:name=".jetpack.compose.ComposeActivity"
-            android:label="@string/title_activity_compose"
-            android:theme="@style/AppTheme"></activity>
+
+
         <activity
             android:name=".MainActivity"
+            android:configChanges="orientation|screenSize"
+            android:screenOrientation="portrait">
+
+        </activity>
+        <activity
+            android:name=".SplashActivity"
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -50,6 +54,8 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -60,6 +66,19 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/file_paths_public" />
         </provider>
+
+
+<!--        <provider-->
+<!--            android:name="androidx.startup.InitializationProvider"-->
+<!--            android:authorities="${applicationId}.androidx-startup"-->
+<!--            android:exported="false"-->
+<!--            tools:node="merge">-->
+<!--            <meta-data-->
+<!--                android:name="ls.yylx.lscodestore.startup.WorkManagerInitializer"-->
+<!--                android:value="androidx.startup" />-->
+<!--        </provider>-->
+
+
     </application>
 
 </manifest>

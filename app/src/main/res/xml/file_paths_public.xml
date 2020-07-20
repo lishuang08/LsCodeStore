@@ -11,6 +11,8 @@
         name="cache"
         path="/" />
 
+
+
     <external-path  name="my_images" path="Pictures"/>
 
     <files-path name="my_images" path="images/"/>

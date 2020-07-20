@@ -31,6 +31,7 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
+import com.orhanobut.logger.Logger
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.basemodule.checkArrayPermissions
 import ls.yylx.lscodestore.db.Specie
@@ -171,7 +172,6 @@ class ChoiceImageSplittiesFragment() : DialogFragment() {
                             toast("没有相机权限，无法拍照")
                         }
                     }
-
                 } else {
                     ShowImageDialogFragment(
                         item
@@ -307,7 +307,7 @@ class ChoiceImageSplittiesFragment() : DialogFragment() {
         checkArrayPermissions(
             arrayOf(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE
+                Manifest.permission.WRITE_EXTERNAL_STORAGE,
             )
         ) { success ->
             if (success) {
@@ -398,6 +398,7 @@ class ChoiceImageSplittiesFragment() : DialogFragment() {
                     )
 
 
+
                     imgList += ChoiceImageData(
                         contentUri,
                         name,
@@ -416,7 +417,7 @@ class ChoiceImageSplittiesFragment() : DialogFragment() {
 
 data class ChoiceImageData(
     val uri: Uri,
-    val name: String,
+    val name: String?,
     val size: Long,
     var path: String = "",
     var modified: Long = 0L,

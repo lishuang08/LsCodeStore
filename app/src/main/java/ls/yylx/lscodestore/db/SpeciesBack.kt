@@ -1,6 +1,7 @@
 package ls.yylx.lscodestore.db
 
 import androidx.room.Entity
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
 
@@ -12,9 +13,10 @@ data class SpeciesBack(
 )
 
 
-@Entity(tableName = "specie")
+@Entity(indices = arrayOf(Index(value = ["key"], unique = true)))
 data class Specie(
-        @PrimaryKey var key: Int = 0,
+        @PrimaryKey(autoGenerate = true) var id: Long  = 0L,
+        var key: Int = 0,
         var nubKey: Int = 0,
         var nameKey: Int = 0,
         var taxonID: String = "",
@@ -30,12 +32,12 @@ data class Specie(
         var rank: String = "",
         var origin: String = "",
         var taxonomicStatus: String = "",
-        var nomenclaturalStatus: List<String> = listOf(),
+//        var nomenclaturalStatus: List<String> = listOf(),
         var remarks: String = "",
         var numDescendants: Int = 0,
         var lastCrawled: String = "",
         var lastInterpreted: String = "",
-        var issues: List<String> = listOf(),
+//        var issues: List<String> = listOf(),
         var synonym: Boolean = false,
         var phylum: String = "",
         var phylumKey: Int = 0,

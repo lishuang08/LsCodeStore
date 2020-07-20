@@ -2,18 +2,19 @@ package ls.yylx.lscodestore.backgroud.room
 
 import android.content.Context
 import androidx.annotation.NonNull
-import androidx.core.content.edit
 import androidx.work.Worker
 import androidx.work.WorkerParameters
 import com.orhanobut.logger.Logger
-import ls.yylx.lscodestore.MyApp
+import ls.yylx.lscodestore.db.RoomDb
 import ls.yylx.lscodestore.network.SingleRetrofit.retrofitGbif
+import splitties.init.appCtx
 
-class RoomWork(@NonNull context: Context, @NonNull workerParams: WorkerParameters) : Worker(context, workerParams) {
+class RoomWork(@NonNull context: Context, @NonNull workerParams: WorkerParameters) :
+    Worker(context, workerParams) {
 
     override fun doWork(): Result {
+        val bookDao = RoomDb.get(appCtx).gbifDao()
 
-        val bookDao = MyApp.appDb.gbifDao()
         var pageNum = bookDao.countAll() / 1000
 
         var endOfRecords = false
@@ -35,10 +36,7 @@ class RoomWork(@NonNull context: Context, @NonNull workerParams: WorkerParameter
                 Logger.e(e.toString())
                 return Result.failure()
             }
-
         }
         return Result.success()
     }
-
-
 }

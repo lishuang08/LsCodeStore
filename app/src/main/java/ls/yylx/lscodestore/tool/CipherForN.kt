@@ -1,7 +1,9 @@
-package ls.yylx.lscodestore.basemodule
+package ls.yylx.lscodestore.tool
 
 import android.util.Base64
 import com.tencent.mmkv.MMKV
+import ls.yylx.lscodestore.MyApp
+import ls.yylx.lscodestore.basemodule.R
 import java.io.UnsupportedEncodingException
 import java.security.MessageDigest
 import java.security.NoSuchAlgorithmException
@@ -22,13 +24,13 @@ object CipherForN {
         MMKV.mmkvWithID(
             "mmap_id_test",
             MMKV.SINGLE_PROCESS_MODE,
-            BaseApplication.instance.getString(R.string.test_cryptkey )
+            MyApp.instance.getString(R.string.test_cryptkey)
         )
     }
 
 
     private val KEY_SK by lazy {
-        BaseApplication.instance.getString(R.string.iv_key)
+        MyApp.instance.getString(R.string.iv_key)
     }//任意字符串,通过MD5转换32个字节
 
     private val ivs

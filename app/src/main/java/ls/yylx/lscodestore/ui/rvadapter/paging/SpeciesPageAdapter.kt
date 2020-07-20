@@ -22,7 +22,6 @@ val diffCallback = object : DiffUtil.ItemCallback<Specie>() {
         oldItem == newItem
 }
 
-
 class SpeciesPageAdapter : PagedListAdapter<Specie, SpeciesPageAdapter.SpecieViewHolder>(diffCallback) {
 
     var holder: SpecieViewHolder? = null

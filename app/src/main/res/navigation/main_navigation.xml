@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_navigation"
+    app:startDestination="@id/mainFragment">
+    <fragment
+        android:id="@+id/mainFragment"
+        android:name="ls.yylx.lscodestore.ui.main.MainFragment"
+        android:label="main_fragment"
+        tools:layout="@layout/main_fragment">
+        <action
+            android:id="@+id/action_mainFragment_to_first_navigation"
+            app:destination="@id/first_navigation" />
+        <action
+            android:id="@+id/action_mainFragment_to_x5WebViewFragment"
+            app:destination="@id/x5WebViewFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_coordinatorLayoutFragment"
+            app:destination="@id/coordinatorLayoutFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_motionLayoutFragment"
+            app:destination="@id/motionLayoutFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_customFragment"
+            app:destination="@id/customFragment" />
+    </fragment>
+
+
+    <include app:graph="@navigation/first_navigation" />
+    <fragment
+        android:id="@+id/x5WebViewFragment"
+        android:name="ls.yylx.lscodestore.webview.X5WebViewFragment"
+        android:label="X5WebViewFragment" />
+
+
+    <fragment
+        android:id="@+id/coordinatorLayoutFragment"
+        android:name="ls.yylx.lscodestore.ui.main.CoordinatorLayoutFragment"
+        android:label="CoordinatorLayoutFragment" />
+    <fragment
+        android:id="@+id/motionLayoutFragment"
+        android:name="ls.yylx.lscodestore.ui.main.MotionLayoutFragment"
+        android:label="MotionLayoutFragment" />
+    <fragment
+        android:id="@+id/customFragment"
+        android:name="ls.yylx.lscodestore.ui.main.CustomFragment"
+        android:label="CustomFragment" />
+</navigation>

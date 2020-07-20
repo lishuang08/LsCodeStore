@@ -1,4 +1,4 @@
-package ls.yylx.lscodestore.basemodule
+package ls.yylx.lscodestore.network
 
 import android.content.Context
 import com.bumptech.glide.GlideBuilder

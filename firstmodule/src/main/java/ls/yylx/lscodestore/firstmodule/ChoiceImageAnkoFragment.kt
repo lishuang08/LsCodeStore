@@ -29,8 +29,8 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
-import ls.yylx.lscodestore.basemodule.GlideApp
 import ls.yylx.lscodestore.basemodule.checkArrayPermissions
 import org.jetbrains.anko.*
 import org.jetbrains.anko.constraint.layout.constraintLayout
@@ -439,7 +439,7 @@ class ImagePageAdapter :
                 scaleType = ImageView.ScaleType.CENTER_CROP
                 padding = dip(16)
             }
-            GlideApp.with(holder.iv).load(R.drawable.ic_camera_black_24px).into(holder.iv)
+            Glide.with(holder.iv).load(R.drawable.ic_camera_black_24px).into(holder.iv)
         } else {
             holder.cb.visibility = View.VISIBLE
             holder.cb.setOnCheckedChangeListener { compoundButton, b ->
@@ -449,7 +449,7 @@ class ImagePageAdapter :
                 scaleType = ImageView.ScaleType.CENTER_CROP
                 padding = dip(0)
             }
-            GlideApp.with(holder.iv).load(item.path).into(holder.iv)
+            Glide.with(holder.iv).load(item.path).into(holder.iv)
         }
     }
 
@@ -491,7 +491,7 @@ class ImagePageAdapter :
                     customView<AppCompatCheckBox> {
                         id = ID_CB
                         buttonTintList =
-                            ColorStateList.valueOf(this.context.getColor(R.color.colorAccent))
+                            ColorStateList.valueOf(resources.getColor(R.color.colorAccent))
                     }.lparams(dip(32), dip(32)) {
                         topToTop = ID_IMAGE
                         endToEnd = ID_IMAGE
@@ -532,7 +532,7 @@ class ShowImageDialogFragment(val title :String,val filePath :String ="",val img
             customView<PhotoView> {
                 scaleType = ImageView.ScaleType.FIT_CENTER
 
-                GlideApp.with(this).load(if (filePath.isEmpty()) imgId  else filePath).into(this)
+                Glide.with(this).load(if (filePath.isEmpty()) imgId  else filePath).into(this)
             }.lparams(matchParent, matchParent)
         }
     }.view

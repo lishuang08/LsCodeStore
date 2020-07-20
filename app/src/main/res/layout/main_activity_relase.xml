@@ -7,16 +7,25 @@
     android:orientation="vertical"
     tools:context=".MainActivity">
 
-<!--    <Button-->
-<!--        android:id="@+id/btn_ok"-->
-<!--        android:text="指纹"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="64dp"/>-->
+
     <fragment
         android:id="@+id/fragment_main_relase"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
         app:defaultNavHost="true"
         app:navGraph="@navigation/base_relase_navigation" />
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="?android:attr/windowBackground"
+        app:itemIconSize="20dp"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 </LinearLayout>

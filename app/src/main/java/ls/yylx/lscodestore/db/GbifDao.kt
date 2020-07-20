@@ -1,7 +1,9 @@
 package ls.yylx.lscodestore.db
 
+import androidx.lifecycle.LiveData
 import androidx.paging.DataSource
 import androidx.room.*
+import kotlinx.coroutines.flow.Flow
 
 /**
  * Created by ls on 2017/12/12.
@@ -13,7 +15,13 @@ interface GbifDao {
     fun species(): DataSource.Factory<Int, Specie>
 
     @Query("SELECT * FROM specie")
-    fun loadAll(): List<Specie>
+    fun loadFlowAll(): Flow<List<Specie>>
+
+    @Query("SELECT * FROM specie")
+      fun loadLiveAll(): LiveData<List<Specie>>
+
+    @Query("SELECT * FROM specie")
+    suspend fun loadAll(): List<Specie>
 
     @Delete
     fun delete(vararg specie: Specie)

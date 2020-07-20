@@ -15,7 +15,6 @@
 
         <item name="searchViewStyle">@style/SearchViewStyle</item>
         <item name="toolbarStyle">@style/ToolbarStyle</item>
-
         <item name="textInputStyle">@style/textinputstyle</item>
 
         <!--        <item name="md_corner_radius">8dp</item>-->
