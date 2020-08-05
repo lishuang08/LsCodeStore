@@ -5,16 +5,14 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
+import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
-import ls.yylx.lscodestore.secondmodule.main.SecondMainActivity
 import splitties.views.dsl.core.Ui
 import splitties.views.dsl.core.frameLayout
 import splitties.views.dsl.core.setContentView
 
-
+@AndroidEntryPoint
 class SplashActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -31,6 +29,7 @@ class SplashActivity : AppCompatActivity(), CoroutineScope by MainScope() {
             }
         })
         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+//        startActivity(Intent(this@SplashActivity, SecondMainActivity::class.java))
         finish()
     }
 }

@@ -1,15 +1,15 @@
 package ls.yylx.lscodestore.ui.main
 
-import android.app.ActivityManager
+import android.content.Intent
 import android.os.Bundle
 import android.util.SparseArray
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.view.WindowManager
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navGraphViewModels
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
@@ -27,6 +27,11 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
         MainFUi(requireContext())
     }
 
+
+    val mainVm by navGraphViewModels<MainViewModel>(R.navigation.main_navigation)
+
+
+//    val mainVm by viewModels<MainViewModel> ()
 
 
     override fun onCreateView(
@@ -51,7 +56,25 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                 findNavController().navigate(R.id.action_mainFragment_to_motionLayoutFragment)
             }
             btn4.setOnClickListener {
-                findNavController().navigate(R.id.action_mainFragment_to_customFragment)
+                findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
+            }
+            btn5.setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_secondMainActivity)
+            }
+            btn6.setOnClickListener {
+                findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
+            }
+            btn7.setOnClickListener {
+                try {
+                    val intent = Intent()
+                    intent.setClassName(
+                        requireContext(),
+                        "ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
+                    )
+                    startActivity(intent)
+                } catch (e: Exception) {
+                    Logger.e(e.message ?: "")
+                }
             }
         }
 

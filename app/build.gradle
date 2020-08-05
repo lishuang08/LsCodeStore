@@ -1,13 +1,14 @@
-apply plugin: 'com.android.application'
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'androidx.navigation.safeargs'
-
-//apply plugin: 'com.didi.dokit'
+apply plugin: "com.android.application"
+apply plugin: "kotlin-android"
+apply plugin: "kotlin-kapt"
+apply plugin: "kotlin-android-extensions"
+apply plugin: "androidx.navigation.safeargs"
+apply plugin: 'dagger.hilt.android.plugin'
+apply plugin: 'koin'
+//apply plugin: "com.didi.dokit"
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    buildToolsVersion "29.0.2"
 
 
     defaultConfig {
@@ -35,7 +36,7 @@ android {
     buildTypes {
         release {
             minifyEnabled false
-            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
         }
     }
     flavorDimensions "flavor"
@@ -45,7 +46,6 @@ android {
             versionNameSuffix "-测试"
             applicationIdSuffix ".testUrl"
 
-            resValue "bool", "isModule", "$isModule"
 
             manifestPlaceholders = [app_name: "啊啊啊测试", app_icon: "@mipmap/ic_launcher"]
 
@@ -54,7 +54,6 @@ android {
         myrelease {
             dimension "flavor"
 
-            resValue "bool", "isModule","$isModule"
         }
     }
 
@@ -64,7 +63,7 @@ android {
         targetCompatibility = "1.8"
     }
     kotlinOptions {
-        jvmTarget = '1.8'
+        jvmTarget = "1.8"
     }
 
     externalNativeBuild {
@@ -149,36 +148,52 @@ android {
 //}
 
 dependencies {
-    implementation  project(':basemodule')
-    implementation project(':firstmodule')
-    implementation project(':secondmodule')
+    implementation project(":basemodule")
+    implementation project(":firstmodule")
+    implementation project(":secondmodule")
+
+
+    implementation "com.google.dagger:hilt-android:$hilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
-    implementation 'androidx.lifecycle:lifecycle-livedata-ktx:2.2.0'
-    implementation 'androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0'
+    implementation "androidx.legacy:legacy-support-v4:1.0.0"
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.2.0"
 
 
-
-    implementation 'com.arthenica:mobile-ffmpeg-full:4.3.2'
-    implementation 'com.quickbirdstudios:opencv:4.1.0-contrib'
+    implementation "com.arthenica:mobile-ffmpeg-full:4.3.2"
+    implementation "com.quickbirdstudios:opencv:4.1.0-contrib"
 //
-//    implementation 'androidx.ui:ui-core:0.1.0-dev13'
-//    implementation 'androidx.ui:ui-tooling:0.1.0-dev13'
-//    implementation 'androidx.ui:ui-layout:0.1.0-dev13'
-//    implementation 'androidx.ui:ui-material:0.1.0-dev13'
+//    implementation "androidx.ui:ui-core:0.1.0-dev13"
+//    implementation "androidx.ui:ui-tooling:0.1.0-dev13"
+//    implementation "androidx.ui:ui-layout:0.1.0-dev13"
+//    implementation "androidx.ui:ui-material:0.1.0-dev13"
 
     def room_version = "2.2.5"
     implementation "androidx.room:room-runtime:$room_version"
-    kapt  "androidx.room:room-compiler:$room_version"
+    kapt "androidx.room:room-compiler:$room_version"
     implementation "androidx.room:room-ktx:$room_version"
 
-    debugImplementation 'com.didichuxing.doraemonkit:doraemonkit:3.1.8'
-    releaseImplementation 'com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8'
-//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
+    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
+//    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.4"
 //    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
 //    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
 
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // Koin for Kotlin
+    implementation "org.koin:koin-core:$koin_version"
+    implementation "org.koin:koin-core-ext:$koin_version"
+    testImplementation "org.koin:koin-test:$koin_version"
+// implementation "org.koin:koin-java:$koin_version"
+
+    implementation "org.koin:koin-androidx-scope:$koin_version"
+    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+    implementation "org.koin:koin-androidx-fragment:$koin_version"
+    implementation "org.koin:koin-androidx-ext:$koin_version"
+
+
+    testImplementation "junit:junit:4.13"
+    androidTestImplementation "androidx.test.ext:junit:1.1.1"
+    androidTestImplementation "androidx.test.espresso:espresso-core:3.2.0"
 }

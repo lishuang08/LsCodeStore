@@ -6,6 +6,7 @@ import android.app.Application
 import android.content.Context
 import android.os.Process
 import com.didichuxing.doraemonkit.DoraemonKit
+import com.google.gson.GsonBuilder
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.scwang.smart.refresh.header.MaterialHeader
@@ -13,11 +14,19 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
 import com.tencent.mmkv.MMKVLogLevel
 import com.tencent.smtt.sdk.QbSdk
+import dagger.hilt.android.HiltAndroidApp
 import ls.yylx.lscodestore.basemodule.R
 import ls.yylx.lscodestore.db.RoomDb
+import ls.yylx.lscodestore.network.ApiGbif
+import ls.yylx.lscodestore.network.SingleRetrofit
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.dsl.module
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import kotlin.properties.Delegates
 
-
+@HiltAndroidApp
 class MyApp : Application() {
     init { //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
@@ -39,9 +48,33 @@ class MyApp : Application() {
             return
         }
 
+        startKoin {
+            androidContext(this@MyApp)
+            modules(appModule)
+        }
+
         initLibrary()
     }
 
+    val appModule = module {
+        single {
+            Retrofit.Builder()
+                .client(SingleRetrofit.getOkhttpBuilder())
+                .baseUrl(
+                    MyApp.instance.getString(
+                        ls.yylx.lscodestore.R.string.base_url
+                    )
+                )
+                .addConverterFactory(
+                    GsonConverterFactory.create(
+                        GsonBuilder().apply {
+                            setPrettyPrinting()
+                        }.create()
+                    )
+                )
+                .build().create(ApiGbif::class.java)
+        }
+    }
 
     private fun initLibrary() {
 

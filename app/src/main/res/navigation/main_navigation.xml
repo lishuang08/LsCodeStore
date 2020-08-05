@@ -24,6 +24,15 @@
         <action
             android:id="@+id/action_mainFragment_to_customFragment"
             app:destination="@id/customFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_secondMainActivity"
+            app:destination="@id/secondMainActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_xmlLntActivity"
+            app:destination="@id/xmlLntActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_ankoTestActivity"
+            app:destination="@id/ankoTestActivity" />
     </fragment>
 
 
@@ -46,4 +55,16 @@
         android:id="@+id/customFragment"
         android:name="ls.yylx.lscodestore.ui.main.CustomFragment"
         android:label="CustomFragment" />
+    <activity
+        android:id="@+id/secondMainActivity"
+        android:name="ls.yylx.lscodestore.secondmodule.main.SecondMainActivity"
+        android:label="SecondMainActivity" />
+    <activity
+        android:id="@+id/xmlLntActivity"
+        android:name="ls.yylx.lscodestore.secondmodule.main.XmlLntActivity"
+        android:label="XmlLntActivity" />
+    <activity
+        android:id="@+id/ankoTestActivity"
+        android:name="ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
+        android:label="AnkoTestActivity" />
 </navigation>

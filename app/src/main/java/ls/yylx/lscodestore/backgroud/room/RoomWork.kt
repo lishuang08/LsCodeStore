@@ -2,7 +2,7 @@ package ls.yylx.lscodestore.backgroud.room
 
 import android.content.Context
 import androidx.annotation.NonNull
-import androidx.work.Worker
+import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.orhanobut.logger.Logger
 import ls.yylx.lscodestore.db.RoomDb
@@ -10,9 +10,9 @@ import ls.yylx.lscodestore.network.SingleRetrofit.retrofitGbif
 import splitties.init.appCtx
 
 class RoomWork(@NonNull context: Context, @NonNull workerParams: WorkerParameters) :
-    Worker(context, workerParams) {
+    CoroutineWorker(context, workerParams) {
 
-    override fun doWork(): Result {
+    override suspend fun doWork(): Result {
         val bookDao = RoomDb.get(appCtx).gbifDao()
 
         var pageNum = bookDao.countAll() / 1000

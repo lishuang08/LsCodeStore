@@ -2,30 +2,36 @@
 
 buildscript {
 
-    ext {
-        nav_version = '2.3.0'
-        kotlin_version = '1.4-M3'
-        isModule = true
-        compose_version = '0.1.0-dev14'
-        room_version='2.3.0-alpha01'
-    }
 
+    ext.nav_version = "2.3.0"
+    ext.kotlin_version = "1.4.0-rc"
+    ext.isModule = true
+    ext.room_version = "2.3.0-alpha01"
+
+    ext.hilt_version = "2.28-alpha"
+    ext.koin_version = "2.1.6"
+    ext.compose_version = "0.1.0-dev15"
 
     repositories {
         google()
         jcenter()
         mavenCentral()
+
+        maven { url = "https://dl.bintray.com/kotlin/kotlin-eap" }
         maven { url "https://jitpack.io" }
-        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
+//        maven("https://jitpack.io")
+//        maven("http://dl.bintray.com/kotlin/kotlin-eap")
+//        maven("https://maven.aliyun.com/repository/google")
+//        maven("https://maven.aliyun.com/repository/public")
     }
 
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha04'
-        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
-        classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
-//        classpath 'com.didichuxing.doraemonkit:doraemonkit-plugin:3.1.8'
+        classpath('com.android.tools.build:gradle:4.2.0-alpha07')
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version")
+//        classpath ("com.didichuxing.doraemonkit:doraemonkit-plugin:3.1.8")
+        classpath "com.google.dagger:hilt-android-gradle-plugin:$hilt_version"
+        classpath "org.koin:koin-gradle-plugin:$koin_version"
     }
 }
 
@@ -35,10 +41,12 @@ allprojects {
         google()
         jcenter()
         mavenCentral()
+        maven { url = "https://dl.bintray.com/kotlin/kotlin-eap" }
         maven { url "https://jitpack.io" }
-        maven { url "http://dl.bintray.com/kotlin/kotlin-eap" }
-        maven { url 'https://maven.aliyun.com/repository/google' }
-        maven { url 'https://maven.aliyun.com/repository/public' }
+//        maven("https://jitpack.io")
+//        maven("http://dl.bintray.com/kotlin/kotlin-eap")
+//        maven("https://maven.aliyun.com/repository/google")
+//        maven("https://maven.aliyun.com/repository/public")
     }
 }
 

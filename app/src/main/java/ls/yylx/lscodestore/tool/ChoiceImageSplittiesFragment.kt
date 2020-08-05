@@ -307,7 +307,7 @@ class ChoiceImageSplittiesFragment() : DialogFragment() {
         checkArrayPermissions(
             arrayOf(
                 Manifest.permission.READ_EXTERNAL_STORAGE,
-                Manifest.permission.WRITE_EXTERNAL_STORAGE,
+                Manifest.permission.WRITE_EXTERNAL_STORAGE
             )
         ) { success ->
             if (success) {

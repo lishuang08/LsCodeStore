@@ -5,7 +5,9 @@ import ls.yylx.lscodestore.MyApp
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.network.InitOkhttp.addDownloadInterceptor
 import ls.yylx.lscodestore.network.InitOkhttp.addInterceptor
-import okhttp3.*
+import okhttp3.ConnectionSpec
+import okhttp3.Interceptor
+import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import java.net.Proxy
@@ -23,9 +25,7 @@ object SingleRetrofit {
         Retrofit.Builder()
             .client(getOkhttpBuilder())
             .baseUrl(
-                MyApp.instance.getString(
-                    R.string.base_url
-                ))
+                BaseUrlGbif)
             .addConverterFactory( GsonConverterFactory.create(
                 GsonBuilder().apply {
                     setPrettyPrinting()
@@ -106,10 +106,6 @@ object SingleRetrofit {
         // 添加各种插入器
         addDownloadInterceptor(builder, downInterceptor)
 
-
-
-
-
         return builder.build()
     }
 
@@ -132,7 +128,7 @@ object SingleRetrofit {
     //实现HostnameVerifier接口
     private class TrustAllHostnameVerifier : HostnameVerifier {
         override fun verify(hostname: String, session: SSLSession): Boolean {
-            return (hostname == "119.145.103.204" || hostname == "120.197.144.196" || hostname == "10.146.0.204")
+            return ( hostname == "120.197.144.196" || hostname == "10.146.0.204")
         }
     }
 

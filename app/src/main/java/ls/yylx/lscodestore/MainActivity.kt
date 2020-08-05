@@ -1,23 +1,26 @@
 package ls.yylx.lscodestore
 
-import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
 import androidx.core.content.ContextCompat
-import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.basemodule.PermissionManager
-import ls.yylx.lscodestore.ui.coroutines.viewmodel.GbifRoomViewModel
+import ls.yylx.lscodestore.db.RoomDb
 import ls.yylx.lscodestore.viewmodel.GbifViewModel
 import java.nio.charset.Charset
+import javax.inject.Inject
+
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
-    val gbifVm  by viewModels<GbifViewModel> ()
+    val gbifVm by viewModels<GbifViewModel>()
+
+    @Inject
+    lateinit var room: RoomDb
 
     val navController by lazy {
         findNavController(R.id.fragment_main_relase)
@@ -31,6 +34,7 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity_relase)
+
 
         gbifVm.UpdateSpecies()
 
@@ -69,11 +73,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
 
 
-    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
-        super.onActivityResult(requestCode, resultCode, data)
-
-
-    }
 
 
     private fun showBiometricPrompt() {
@@ -142,8 +141,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         )
         PermissionManager.onRequestPermissionsResult(requestCode, grantResults)
     }
-
-
 
 
 }
