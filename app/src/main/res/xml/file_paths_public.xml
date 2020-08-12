@@ -1,23 +1,2 @@
 <?xml version="1.0" encoding="utf-8"?>
-<paths>
-    <external-path
-        name="Download"
-        path="/" />
-    <external-files-path
-        name="file"
-        path="/" />
-
-    <external-cache-path
-        name="cache"
-        path="/" />
-
-
-
-    <external-path  name="my_images" path="Pictures"/>
-
-    <files-path name="my_images" path="images/"/>
-    <files-path name="my_docs" path="docs/"/>
-
-    <external-files-path name="my_images" path="Android/data/ls.yylx.lscodestore/files/Pictures" />
-
-</paths>
+<external-path  name="my_images" path="/"/>

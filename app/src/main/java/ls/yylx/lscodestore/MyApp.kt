@@ -16,9 +16,8 @@ import com.tencent.mmkv.MMKVLogLevel
 import com.tencent.smtt.sdk.QbSdk
 import dagger.hilt.android.HiltAndroidApp
 import ls.yylx.lscodestore.basemodule.R
-import ls.yylx.lscodestore.db.RoomDb
-import ls.yylx.lscodestore.network.ApiGbif
-import ls.yylx.lscodestore.network.SingleRetrofit
+import ls.yylx.lscodestore.basemodule.network.GbifService
+import ls.yylx.lscodestore.basemodule.network.SingleRetrofit
 import org.koin.android.ext.koin.androidContext
 import org.koin.core.context.startKoin
 import org.koin.dsl.module
@@ -42,7 +41,6 @@ class MyApp : Application() {
 
     override fun onCreate() {
         super.onCreate()
-        instance = this
         val curProcess = Process.myUid()
         if (getProcessName(curProcess) != packageName) {
             return
@@ -72,7 +70,7 @@ class MyApp : Application() {
                         }.create()
                     )
                 )
-                .build().create(ApiGbif::class.java)
+                .build().create(GbifService::class.java)
         }
     }
 
@@ -83,11 +81,10 @@ class MyApp : Application() {
         if (BuildConfig.DEBUG) {
             DoraemonKit.install(this)
         }
-        appDb = RoomDb.get(this)
 
         Logger.addLogAdapter(object : AndroidLogAdapter() {
             override fun isLoggable(priority: Int, tag: String?): Boolean {
-                return ls.yylx.lscodestore.basemodule.BuildConfig.DEBUG
+                return BuildConfig.DEBUG
             }
         })
 
@@ -124,7 +121,6 @@ class MyApp : Application() {
     companion object {
         lateinit var instance: MyApp
 
-        lateinit var appDb: RoomDb
 
         var cookie: String? = null
 

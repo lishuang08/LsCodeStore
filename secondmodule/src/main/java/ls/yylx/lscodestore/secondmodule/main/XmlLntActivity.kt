@@ -8,5 +8,11 @@ class XmlLntActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_xml_lnt)
+
     }
+
+    override fun onResume() {
+        super.onResume()
+    }
+
 }

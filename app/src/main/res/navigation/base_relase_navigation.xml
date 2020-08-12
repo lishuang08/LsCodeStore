@@ -10,5 +10,9 @@
     <include app:graph="@navigation/tab2_navigation" />
     <include app:graph="@navigation/tab3_navigation" />
     <include app:graph="@navigation/main_navigation" />
+    <fragment
+        android:id="@+id/flutterModuleFragment"
+        android:name="ls.yylx.lscodestore.ui.FlutterModuleFragment"
+        android:label="FlutterModuleFragment" /><action android:id="@+id/action_global_flutterModuleFragment" app:destination="@id/flutterModuleFragment"/>
 
 </navigation>

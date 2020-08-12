@@ -4,15 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
-import androidx.lifecycle.asFlow
 import androidx.lifecycle.asLiveData
 import androidx.lifecycle.lifecycleScope
-import com.orhanobut.logger.Logger
-import kotlinx.coroutines.flow.StateFlow
 import ls.yylx.lscodestore.base.BaseFragment
-import ls.yylx.lscodestore.db.GbifDao
-import ls.yylx.lscodestore.db.Specie
-import ls.yylx.lscodestore.ui.coroutines.viewmodel.GbifRoomViewModel
+import ls.yylx.lscodestore.basemodule.GbifRoomViewModel
 
 class FlowFragment  :BaseFragment(){
     val flowVm by viewModels<GbifRoomViewModel> ()

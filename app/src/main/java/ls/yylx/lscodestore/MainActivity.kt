@@ -10,7 +10,7 @@ import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.basemodule.PermissionManager
-import ls.yylx.lscodestore.db.RoomDb
+import ls.yylx.lscodestore.basemodule.db.RoomDb
 import ls.yylx.lscodestore.viewmodel.GbifViewModel
 import java.nio.charset.Charset
 import javax.inject.Inject
@@ -18,6 +18,8 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     val gbifVm by viewModels<GbifViewModel>()
+
+
 
     @Inject
     lateinit var room: RoomDb

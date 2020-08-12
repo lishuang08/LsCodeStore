@@ -12,7 +12,7 @@ class MainFUi(override val ctx: Context) : Ui {
     }
 
     val btn3 = button {
-        text = "motionlayout"
+        text = "flutter"
     }
     val btn4 = button {
         text = "anko"

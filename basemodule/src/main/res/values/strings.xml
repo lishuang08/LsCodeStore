@@ -4,5 +4,5 @@
 
     <string name="test_cryptkey">crypt_key</string>
 
-
+    <string name="base_url">http://base_url</string>
 </resources>

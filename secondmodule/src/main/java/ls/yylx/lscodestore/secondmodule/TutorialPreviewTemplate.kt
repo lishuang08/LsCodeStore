@@ -1,9 +1,5 @@
 package ls.yylx.lscodestore.secondmodule
 
-import androidx.compose.Composable
-import androidx.ui.core.ContextAmbient
-import androidx.ui.material.MaterialTheme
-import androidx.ui.material.Surface
 import com.google.android.material.color.MaterialColors
 
 //@Composable

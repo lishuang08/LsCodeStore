@@ -1,0 +1,15 @@
+include ":basemodule"
+include ":secondmodule"
+include ":firstmodule"
+include ":app"
+//include ":flutter_module"
+
+rootProject.name = "LsCodeStore"
+
+setBinding(new Binding([gradle: this]))
+evaluate(new File(
+        settingsDir.parentFile,
+        'LsCodeStore/flutter_module/.android/include_flutter.groovy'
+))
+
+

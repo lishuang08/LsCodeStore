@@ -11,9 +11,8 @@ import com.orhanobut.logger.Logger
 import com.tencent.smtt.sdk.WebViewClient
 import ls.yylx.lscodestore.base.BaseDownLoadFragment
 import ls.yylx.lscodestore.base.openDownLoadFile
-import ls.yylx.lscodestore.dataclass.PreviewItem
+import ls.yylx.lscodestore.basemodule.PreviewItem
 import splitties.views.dsl.core.Ui
-import splitties.views.dsl.core.add
 import splitties.views.dsl.core.frameLayout
 
 

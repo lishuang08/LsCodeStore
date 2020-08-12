@@ -3,4 +3,35 @@
     <color name="colorPrimary">#6200EE</color>
     <color name="colorPrimaryDark">#3700B3</color>
     <color name="colorAccent">#03DAC5</color>
+
+    <color name="yellow">#FFEB3B</color>
+
+    <color name="bg_business">#F3F2F9</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+    <color name="grey_aa">#aaaaaa</color>
+    <color name="grey_bb">#bbbbbb</color>
+
+    <color name="grey_cc">#cccccc</color>
+    <color name="grey_dd">#dddddd</color>
+    <color name="bg_private">#393C4D</color>
+
+
+    <color name="black_41">#414141</color>
+    <color name="grey_66">#666666</color>
+
+    <color name="grey_eb">#ebebeb</color>
+    <color name="grey_ee">#eeeeee</color>
+    <color name="grey_e9">#e9e9e9</color>
+
+    <color name="grey_ff">#ffffff</color>
+    <color name="grey_f4">#F4F4F4</color>
+    <color name="grey_f5">#F5F5F5</color>
+    <color name="grey_f6">#F6F6F6</color>
+    <color name="grey_f9">#f9f9f9</color>
+
+    <color name="grey_99">#999999</color>
+    <color name="grey_44">#444444</color>
+    <color name="grey_33">#333333</color>
 </resources>

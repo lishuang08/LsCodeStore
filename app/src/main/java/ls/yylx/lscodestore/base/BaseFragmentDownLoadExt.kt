@@ -13,11 +13,11 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import ls.yylx.lscodestore.MyApp
 import ls.yylx.lscodestore.R
-import ls.yylx.lscodestore.dataclass.PreviewItem
-import ls.yylx.lscodestore.network.ApiResponse
-import ls.yylx.lscodestore.network.DownloadProgressInterceptor
-import ls.yylx.lscodestore.network.SingleApiCallback
-import ls.yylx.lscodestore.network.SingleRetrofit
+import ls.yylx.lscodestore.basemodule.PreviewItem
+import ls.yylx.lscodestore.basemodule.network.ApiResponse
+import ls.yylx.lscodestore.basemodule.network.DownloadProgressInterceptor
+import ls.yylx.lscodestore.basemodule.network.SingleApiCallback
+import ls.yylx.lscodestore.basemodule.network.SingleRetrofit
 import ls.yylx.lscodestore.tool.Tools
 import okhttp3.Interceptor
 import okhttp3.Response

@@ -2,17 +2,17 @@ package ls.yylx.lscodestore.secondmodule.main
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.Composable
-import androidx.ui.core.Modifier
-import androidx.ui.core.setContent
-import androidx.ui.foundation.ScrollableColumn
-import androidx.ui.foundation.Text
-import androidx.ui.layout.Column
-import androidx.ui.layout.ConstraintLayout
-import androidx.ui.layout.padding
+import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.ConstraintLayout
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.setContent
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
 import androidx.ui.tooling.preview.Preview
-import androidx.ui.unit.dp
-import androidx.ui.viewinterop.AndroidView
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.webView
 
@@ -49,11 +49,13 @@ class SecondMainActivity : AppCompatActivity() {
     @Preview
     @Composable
     fun addAnkoAndroidView() {
-        AndroidView(view = UI {
-            webView  {
+        AndroidView({
+            UI { webView {
                 loadUrl("https://www.qq.com")
-            }
-        }.view, modifier = Modifier.padding(16.dp))
+            } }.view
+        }, modifier = Modifier.padding(16.dp)) {
+
+        }
     }
 
 

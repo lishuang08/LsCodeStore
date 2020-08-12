@@ -17,29 +17,23 @@
             motion:clickAction="toggle"
             motion:targetId="@+id/iv_down" />
 
+
     </Transition>
 
 
     <ConstraintSet android:id="@+id/start">
-
         <Constraint
             android:id="@+id/space_main"
             android:layout_width="match_parent"
             android:layout_height="160dp"
             motion:layout_constraintBottom_toBottomOf="parent" />
         <Constraint
-            android:id="@+id/vp2_main"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            motion:layout_constraintBottom_toTopOf="@+id/iv_down"
-            motion:layout_constraintTop_toTopOf="parent" />
+            motion:layout_constraintTop_toTopOf="parent"
+            android:id="@+id/vp2_main"
+            motion:layout_constraintBottom_toTopOf="@+id/iv_down" />
 
-        <Constraint
-            android:id="@+id/toolbar_01"
-            android:layout_width="match_parent"
-            android:layout_height="56dp"
-            android:visibility="visible"
-            motion:layout_constraintTop_toTopOf="parent" />
 
     </ConstraintSet>
 
@@ -49,12 +43,13 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
         <Constraint
-            android:id="@+id/toolbar_01"
+            android:id="@+id/lnt_weeather"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
             motion:layout_constraintStart_toStartOf="@+id/vp2_main"
             motion:layout_constraintTop_toTopOf="@+id/vp2_main" />
+
 
     </ConstraintSet>
 

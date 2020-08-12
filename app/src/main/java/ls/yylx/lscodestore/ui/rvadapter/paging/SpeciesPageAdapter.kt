@@ -6,9 +6,8 @@ import android.view.ViewGroup
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import kotlinx.coroutines.flow.Flow
 import ls.yylx.lscodestore.R
-import ls.yylx.lscodestore.db.Specie
+import ls.yylx.lscodestore.basemodule.db.Specie
 import splitties.dimensions.dip
 import splitties.views.dsl.core.*
 import splitties.views.dsl.material.materialCardView

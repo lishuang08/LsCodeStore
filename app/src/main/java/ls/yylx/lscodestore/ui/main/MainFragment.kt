@@ -11,12 +11,14 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import com.orhanobut.logger.Logger
+import io.flutter.embedding.android.FlutterActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.tool.ChoiceImageData
 import ls.yylx.lscodestore.tool.ChoiceImageSplittiesFragment
 import ls.yylx.lscodestore.ui.splittiesview.MainFUi
+import splitties.toast.toast
 
 
 class MainFragment : Fragment(), CoroutineScope by MainScope() {
@@ -53,7 +55,9 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                 findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
             }
             btn3.setOnClickListener {
-                findNavController().navigate(R.id.action_mainFragment_to_motionLayoutFragment)
+                startActivity(
+                    FlutterActivity.createDefaultIntent(requireActivity() )
+                )
             }
             btn4.setOnClickListener {
                 findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
@@ -64,6 +68,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
             btn6.setOnClickListener {
                 findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
             }
+            //hardcode （硬编码）方式跳转module
             btn7.setOnClickListener {
                 try {
                     val intent = Intent()
@@ -73,10 +78,12 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                     )
                     startActivity(intent)
                 } catch (e: Exception) {
+                    toast("没有跳转目标")
                     Logger.e(e.message ?: "")
                 }
             }
         }
+
 
 
 
