@@ -11,7 +11,6 @@ import com.afollestad.materialdialogs.customview.customView
 import com.orhanobut.logger.Logger
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
-import ls.yylx.lscodestore.MyApp
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.basemodule.PreviewItem
 import ls.yylx.lscodestore.basemodule.network.ApiResponse
@@ -84,9 +83,7 @@ fun BaseDownLoadFragment.openDownLoadFile(
                 )
             )
             .baseUrl(
-                MyApp.instance.getString(
-                    R.string.base_url
-                )
+                 "http://www.gbif.com"
             )
             .addConverterFactory(GsonConverterFactory.create())
             .build().create(ApiResponse::class.java)

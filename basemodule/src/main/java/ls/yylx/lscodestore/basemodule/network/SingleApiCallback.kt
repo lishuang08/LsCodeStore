@@ -46,9 +46,4 @@ abstract class SingleApiCallback<T> : Callback<T> {
     }
 
 
-    open fun checkCode(code: Int) {
-        if (code == 102) {
-//            LiveEventBus.get("token_lost").post("logout")
-        }
-    }
 }

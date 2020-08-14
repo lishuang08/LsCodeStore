@@ -6,7 +6,6 @@ import android.app.Application
 import android.content.Context
 import android.os.Process
 import com.didichuxing.doraemonkit.DoraemonKit
-import com.google.gson.GsonBuilder
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.scwang.smart.refresh.header.MaterialHeader
@@ -14,18 +13,13 @@ import com.scwang.smart.refresh.layout.SmartRefreshLayout
 import com.tencent.mmkv.MMKV
 import com.tencent.mmkv.MMKVLogLevel
 import com.tencent.smtt.sdk.QbSdk
-import dagger.hilt.android.HiltAndroidApp
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
 import ls.yylx.lscodestore.basemodule.R
-import ls.yylx.lscodestore.basemodule.network.GbifService
-import ls.yylx.lscodestore.basemodule.network.SingleRetrofit
-import org.koin.android.ext.koin.androidContext
-import org.koin.core.context.startKoin
-import org.koin.dsl.module
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
+import splitties.init.appCtx
 import kotlin.properties.Delegates
 
-@HiltAndroidApp
+//@HiltAndroidApp
 class MyApp : Application() {
     init { //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
@@ -45,69 +39,45 @@ class MyApp : Application() {
         if (getProcessName(curProcess) != packageName) {
             return
         }
-
-        startKoin {
-            androidContext(this@MyApp)
-            modules(appModule)
-        }
+        instance = this
 
         initLibrary()
     }
 
-    val appModule = module {
-        single {
-            Retrofit.Builder()
-                .client(SingleRetrofit.getOkhttpBuilder())
-                .baseUrl(
-                    MyApp.instance.getString(
-                        ls.yylx.lscodestore.R.string.base_url
-                    )
-                )
-                .addConverterFactory(
-                    GsonConverterFactory.create(
-                        GsonBuilder().apply {
-                            setPrettyPrinting()
-                        }.create()
-                    )
-                )
-                .build().create(GbifService::class.java)
-        }
-    }
 
     private fun initLibrary() {
-
-        instance = this
-
-        if (BuildConfig.DEBUG) {
-            DoraemonKit.install(this)
-        }
-
-        Logger.addLogAdapter(object : AndroidLogAdapter() {
-            override fun isLoggable(priority: Int, tag: String?): Boolean {
-                return BuildConfig.DEBUG
+        GlobalScope.launch {
+            if (BuildConfig.DEBUG) {
+                DoraemonKit.install(instance)
             }
-        })
 
-        MMKV.initialize(this)
-        MMKV.setLogLevel(if (ls.yylx.lscodestore.basemodule.BuildConfig.DEBUG) MMKVLogLevel.LevelDebug else MMKVLogLevel.LevelNone)
+            Logger.addLogAdapter(object : AndroidLogAdapter() {
+                override fun isLoggable(priority: Int, tag: String?): Boolean {
+                    return BuildConfig.DEBUG
+                }
+            })
+
+            MMKV.initialize(instance)
+            MMKV.setLogLevel(if (ls.yylx.lscodestore.basemodule.BuildConfig.DEBUG) MMKVLogLevel.LevelDebug else MMKVLogLevel.LevelNone)
 
 //        LiveEventBus.get().config()
 
 //        CrashReport.initCrashReport(getApplicationContext(), "", true)
 
 
-        //x5内核初始化接口
-        QbSdk.initX5Environment(applicationContext, object : QbSdk.PreInitCallback {
-            override fun onViewInitFinished(arg0: Boolean) {
+            //x5内核初始化接口
+            QbSdk.initX5Environment(appCtx, object : QbSdk.PreInitCallback {
+                override fun onViewInitFinished(arg0: Boolean) {
 
-                //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
-                Logger.d("app", " onViewInitFinished is $arg0")
-            }
+                    //x5內核初始化完成的回调，为true表示x5内核加载成功，否则表示x5内核加载失败，会自动切换到系统内核。
+                    Logger.d("app", " onViewInitFinished is $arg0")
+                }
 
-            override fun onCoreInitFinished() {
+                override fun onCoreInitFinished() {
 
-            }
-        })
+                }
+            })
+        }
     }
 
 

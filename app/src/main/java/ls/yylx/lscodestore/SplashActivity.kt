@@ -5,14 +5,12 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
-import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import splitties.views.dsl.core.Ui
 import splitties.views.dsl.core.frameLayout
 import splitties.views.dsl.core.setContentView
 
-@AndroidEntryPoint
 class SplashActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

@@ -1,7 +1,6 @@
 package ls.yylx.lscodestore.basemodule.network
 
 import com.google.gson.GsonBuilder
-import ls.yylx.lscodestore.basemodule.R
 import ls.yylx.lscodestore.basemodule.network.InitOkhttp.addDownloadInterceptor
 import ls.yylx.lscodestore.basemodule.network.InitOkhttp.addInterceptor
 import okhttp3.ConnectionSpec
@@ -9,7 +8,6 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import splitties.init.appCtx
 import java.net.Proxy
 import java.security.SecureRandom
 import java.security.cert.CertificateException
@@ -19,35 +17,40 @@ import javax.net.ssl.*
 
 
 object SingleRetrofit {
-    val BaseUrlGbif = "http://api.gbif.org/v1/"
+    val baseUrlGbif = "http://api.gbif.org/v1/"
+    val baseUrlCat = "https://api.thecatapi.com/v1/"
+
+    const val catKey = "api_key=f0377c31-17d1-40f8-9799-68a9d2265ae2"
 
     val retrofitGbif by lazy {
         Retrofit.Builder()
             .client(getOkhttpBuilder())
             .baseUrl(
-                BaseUrlGbif)
-            .addConverterFactory( GsonConverterFactory.create(
-                GsonBuilder().apply {
-                    setPrettyPrinting()
-                }.create()
-            ))
+                baseUrlGbif
+            )
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder().apply {
+                        setPrettyPrinting()
+                    }.create()
+                )
+            )
             .build().create(GbifService::class.java)
     }
 
 
-    val retrofitApi by lazy {
+    val retrofitCat by lazy {
         Retrofit.Builder()
             .client(getOkhttpBuilder())
-            .baseUrl(
-                appCtx.getString(
-                    R.string.base_url
-                ))
-            .addConverterFactory( GsonConverterFactory.create(
-                GsonBuilder().apply {
-                    setPrettyPrinting()
-                }.create()
-            ))
-            .build().create(ApiResponse::class.java)
+            .baseUrl(baseUrlCat)
+            .addConverterFactory(
+                GsonConverterFactory.create(
+                    GsonBuilder().apply {
+                        setPrettyPrinting()
+                    }.create()
+                )
+            )
+            .build().create(ApiCatApi::class.java)
     }
 
     fun getOkhttpBuilder(): OkHttpClient {
@@ -128,7 +131,7 @@ object SingleRetrofit {
     //实现HostnameVerifier接口
     private class TrustAllHostnameVerifier : HostnameVerifier {
         override fun verify(hostname: String, session: SSLSession): Boolean {
-            return ( hostname == "120.197.144.196" || hostname == "10.146.0.204")
+            return (hostname == "" || hostname == "10.146.0.204")
         }
     }
 

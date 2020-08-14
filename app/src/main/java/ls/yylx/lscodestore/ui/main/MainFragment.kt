@@ -56,7 +56,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
             }
             btn3.setOnClickListener {
                 startActivity(
-                    FlutterActivity.createDefaultIntent(requireActivity() )
+                    FlutterActivity.createDefaultIntent(requireActivity())
                 )
             }
             btn4.setOnClickListener {

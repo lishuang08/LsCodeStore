@@ -10,19 +10,14 @@ import com.orhanobut.logger.Logger
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.basemodule.PermissionManager
-import ls.yylx.lscodestore.basemodule.db.RoomDb
 import ls.yylx.lscodestore.viewmodel.GbifViewModel
 import java.nio.charset.Charset
-import javax.inject.Inject
 
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     val gbifVm by viewModels<GbifViewModel>()
 
 
-
-    @Inject
-    lateinit var room: RoomDb
 
     val navController by lazy {
         findNavController(R.id.fragment_main_relase)
@@ -38,7 +33,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         setContentView(R.layout.main_activity_relase)
 
 
-        gbifVm.UpdateSpecies()
+
+        gbifVm.updateSpecies()
 
 //        if (resources.getBoolean(R.bool.isModule)) {
 //            setContentView(R.layout.main_activity_relase)
@@ -72,9 +68,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
         val title: String,
         val num: Int
     )
-
-
-
 
 
     private fun showBiometricPrompt() {

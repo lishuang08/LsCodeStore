@@ -3,8 +3,8 @@ apply plugin: "kotlin-android"
 apply plugin: "kotlin-kapt"
 apply plugin: "kotlin-android-extensions"
 apply plugin: "androidx.navigation.safeargs"
-apply plugin: 'dagger.hilt.android.plugin'
-apply plugin: 'koin'
+//apply plugin: 'dagger.hilt.android.plugin'
+//apply plugin: 'koin'
 //apply plugin: "com.didi.dokit"
 android {
     compileSdkVersion 30
@@ -108,7 +108,6 @@ android {
 }
 
 
-
 //
 //dokitExt {
 //    //dokit 插件开关
@@ -156,8 +155,8 @@ dependencies {
     implementation project(":flutter")
 
 
-    implementation "com.google.dagger:hilt-android:$hilt_version"
-    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
+//    implementation "com.google.dagger:hilt-android:$hilt_version"
+//    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation "androidx.legacy:legacy-support-v4:1.0.0"
@@ -180,16 +179,27 @@ dependencies {
 //    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
 //    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
 
-    // Koin for Kotlin
-    implementation "org.koin:koin-core:$koin_version"
-    implementation "org.koin:koin-core-ext:$koin_version"
-    testImplementation "org.koin:koin-test:$koin_version"
+//    // Koin for Kotlin
+//    implementation "org.koin:koin-core:$koin_version"
+//    implementation "org.koin:koin-core-ext:$koin_version"
+//    testImplementation "org.koin:koin-test:$koin_version"
+//    // Koin for Android
+//    implementation "org.koin:koin-android:$koin_version"
+//    // Koin AndroidX Scope features
+//    implementation "org.koin:koin-androidx-scope:$koin_version"
+//    // Koin AndroidX ViewModel features
+//        implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+//    // Koin AndroidX Fragment features
+//    implementation "org.koin:koin-androidx-fragment:$koin_version"
+//    // Koin AndroidX Experimental features
+//    implementation "org.koin:koin-androidx-ext:$koin_version"
+
 // implementation "org.koin:koin-java:$koin_version"
 
-    implementation "org.koin:koin-androidx-scope:$koin_version"
-    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
-    implementation "org.koin:koin-androidx-fragment:$koin_version"
-    implementation "org.koin:koin-androidx-ext:$koin_version"
+//    implementation "org.koin:koin-androidx-scope:$koin_version"
+//    implementation "org.koin:koin-androidx-viewmodel:$koin_version"
+//    implementation "org.koin:koin-androidx-fragment:$koin_version"
+//    implementation "org.koin:koin-androidx-ext:$koin_version"
 
 
     testImplementation "junit:junit:4.13"

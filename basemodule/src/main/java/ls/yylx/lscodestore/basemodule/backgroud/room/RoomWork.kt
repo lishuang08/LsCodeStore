@@ -5,15 +5,14 @@ import androidx.annotation.NonNull
 import androidx.work.CoroutineWorker
 import androidx.work.WorkerParameters
 import com.orhanobut.logger.Logger
-import ls.yylx.lscodestore.basemodule.db.RoomDb
+import ls.yylx.lscodestore.basemodule.db.RoomDb.Companion.singleRoom
 import ls.yylx.lscodestore.basemodule.network.SingleRetrofit.retrofitGbif
-import splitties.init.appCtx
 
 class RoomWork(@NonNull context: Context, @NonNull workerParams: WorkerParameters) :
     CoroutineWorker(context, workerParams) {
 
     override suspend fun doWork(): Result {
-        val bookDao = RoomDb.get(appCtx).gbifDao()
+        val bookDao = singleRoom.gbifDao()
 
         var pageNum = bookDao.countAll() / 1000
 

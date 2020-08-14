@@ -43,7 +43,7 @@ class AnkoTestActivity : AppCompatActivity(), CoroutineScope by MainScope() {
             adapter = adp
         }
 
-//
+
 //        flowVm.list.observe(this, Observer {
 //            launch {
 //                adp.submitData(it)

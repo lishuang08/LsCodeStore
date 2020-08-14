@@ -82,13 +82,13 @@ class GbifViewModel(app: Application) : AndroidViewModel(app) {
     }
 
 
-    fun UpdateSpecies() =
+    fun updateSpecies() =
         WorkManager.getInstance(getApplication()).apply {
             beginUniqueWork("getGbifSpecie", ExistingWorkPolicy.REPLACE, workRequest).enqueue()
         }
 
 
-    val singleSpcie by lazy {
+    val singleSpcie by lazy(LazyThreadSafetyMode.NONE) {
         MutableLiveData<String>()
     }
 
