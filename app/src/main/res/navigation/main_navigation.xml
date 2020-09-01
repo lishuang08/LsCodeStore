@@ -57,7 +57,7 @@
         android:label="CustomFragment" />
     <activity
         android:id="@+id/secondMainActivity"
-        android:name="ls.yylx.lscodestore.secondmodule.main.SecondMainActivity"
+        android:name="ls.yylx.lscodestore.secondmodule.main.ComposeMainActivity"
         android:label="SecondMainActivity" />
     <activity
         android:id="@+id/xmlLntActivity"

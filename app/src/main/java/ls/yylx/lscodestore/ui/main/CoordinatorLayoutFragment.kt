@@ -61,7 +61,6 @@ class CoordinatorLayoutFragment : Fragment(), CoroutineScope by MainScope() {
             appBar.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
                 Logger.e("verticalOffset    $verticalOffset")
 
-
             })
         }
 

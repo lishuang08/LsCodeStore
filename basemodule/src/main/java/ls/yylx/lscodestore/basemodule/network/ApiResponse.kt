@@ -8,7 +8,7 @@ import retrofit2.http.*
 /**
  * Created by ls on 2019/9/24.
  */
-interface ApiResponse {
+interface ApiResponse<T> {
 
     @GET
     @FormUrlEncoded

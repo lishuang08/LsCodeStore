@@ -1,7 +1,5 @@
 package ls.yylx.lscodestore.secondmodule
 
-import com.google.android.material.color.MaterialColors
-
 //@Composable
 //fun TutorialPreviewTemplate(
 //    colors: MaterialColors = lightThemeColors,

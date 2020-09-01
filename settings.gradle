@@ -1,5 +1,5 @@
 include ":basemodule"
-include ":secondmodule"
+include ':composemodule'
 include ":firstmodule"
 include ":app"
 //include ":flutter_module"
