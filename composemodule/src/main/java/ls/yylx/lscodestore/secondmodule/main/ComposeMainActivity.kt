@@ -5,27 +5,19 @@ import WebContext
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.ScrollableColumn
-import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.padding
-import androidx.compose.material.IconButton
-import androidx.compose.material.Scaffold
-import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.setContent
-import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import ls.yylx.lscodestore.basemodule.GbifRoomViewModel
 import ls.yylx.lscodestore.basemodule.db.Specie
-import ls.yylx.lscodestore.secondmodule.R
 import ls.yylx.lscodestore.secondmodule.base.*
 import ls.yylx.lscodestore.secondmodule.main.ui.columnView
-import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.webView
 
@@ -64,6 +56,7 @@ class ComposeMainActivity : AppCompatActivity() {
 
         }
     }
+
     @Composable
     fun addAndroidView() {
         val v = WebUi(this)
@@ -82,54 +75,34 @@ val list by lazy(LazyThreadSafetyMode.NONE) {
 }
 
 
-
-
 @Composable
 fun mainPage() {
     var (state, setState) = remember { mutableStateOf<HomeState>(State_Home(hashMapOf())) }
 
-    JetpackTheme {
-        Scaffold(
-            topBar = {
-                TopAppBar(
-                    navigationIcon = {
-                        IconButton(onClick = {
-                            setState.invoke(State_Home(hashMapOf()))
-                        }) {
-                            val image = vectorResource(R.drawable.ic_back)
-
-                            Image(image)
-                        }
-                    },
-                    title = {
-                        Text(text = state.name)
-                    }
-                )
+    when (state) {
+        is State_Home -> {
+            ScrollableColumn(modifier = Modifier.padding(16.dp)) {
+                columnView(list, setState)
             }
-        ) {
-            when (state) {
-                is State_Home -> {
-                    ScrollableColumn(modifier = Modifier.padding(16.dp)) {
-                        columnView(list, setState)
-                    }
-                }
-                is State_Page0 -> {
-                    ScrollableColumn(modifier = Modifier.padding(16.dp)) {
-                        WebComponent("http://www.qq.com", webContext = WebContext())
-                    }
-                }
-                is State_Page1 -> {
 
-                }
-                is State_Page2 -> {
-
-                }
-                is State_Page3 -> {
-
-                }
-            }
 
         }
+        is State_Page0 -> {
+
+            ScrollableColumn(modifier = Modifier.padding(16.dp)) {
+                WebComponent("http://www.qq.com", webContext = WebContext())
+            }
+        }
+        is State_Page1 -> {
+
+        }
+        is State_Page2 -> {
+
+        }
+        is State_Page3 -> {
+
+        }
+
 
     }
 }

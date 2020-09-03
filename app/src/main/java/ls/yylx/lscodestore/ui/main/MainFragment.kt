@@ -7,16 +7,21 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.Text
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
+import androidx.compose.material.IconButton
+import androidx.compose.material.Scaffold
+import androidx.compose.material.TopAppBar
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
+import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -30,6 +35,7 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.secondmodule.main.mainPage
+import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
 import ls.yylx.lscodestore.tool.ChoiceImageData
 import ls.yylx.lscodestore.tool.ChoiceImageSplittiesFragment
 import org.jetbrains.anko.*
@@ -40,6 +46,8 @@ import splitties.views.onClick
 
 
 class MainFragment : Fragment(), CoroutineScope by MainScope() {
+    val mainState = mutableStateOf(0)
+
     val isCompose = true
 
     val sparseArray = SparseArray<String>()
@@ -124,71 +132,100 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
     @Preview
     @Composable
     fun composeView0() {
-        val (state, setState) = remember { mutableStateOf(0) }
-
-        when (state) {
-            0 -> {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    list.forEach {
-                        Button(modifier = Modifier.padding(16.dp).fillMaxWidth(), onClick = {
-                            when (it) {
-                                "查看" -> {
-                                    ChoiceImageSplittiesFragment().apply {
-                                        setOnSelectedBack {
-                                            Logger.e(it.toString())
-                                        }
-                                    }.show(parentFragmentManager, null)
-                                }
-                                "CoordinatorLayout" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
-                                }
-                                "flutter" -> {
-                                    startActivity(
-                                        FlutterActivity.createDefaultIntent(requireActivity())
-                                    )
-                                }
-                                "anko" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
-                                }
-                                "jetpack_compose" -> {
-                                    setState.invoke(1)
-                                }
-                                "xml" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
-                                }
-                                //hardcode （硬编码）方式跳转module
-                                "hadrcode" -> {
-                                    try {
-                                        val intent = Intent()
-                                        intent.setClassName(
-                                            requireContext(),
-                                            "ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
-                                        )
-                                        startActivity(intent)
-                                    } catch (e: Exception) {
-                                        toast("没有跳转目标")
-                                        Logger.e(e.message ?: "")
-                                    }
-                                }
+        val (state, setState) = remember { mainState }
+        JetpackTheme {
+            Scaffold(
+                topBar = {
+                    TopAppBar(
+                        navigationIcon = {
+                            IconButton(onClick = {
+//                                if (state is State_Home) {
+//
+//                                } else {
+//                                    setState.invoke(State_Home(hashMapOf()))
+//                                }
+                            }) {
+                                val image =
+                                    vectorResource(ls.yylx.lscodestore.secondmodule.R.drawable.ic_back)
+                                Image(image)
                             }
+                        },
+                        title = {
+//                            Text(text = state.name)
+                        }
+                    )
+                }
+            ) {
+                when (state) {
+                    0 -> {
+                        Column(modifier = Modifier.padding(16.dp)) {
+                            list.forEach {
+                                Button(
+                                    modifier = Modifier.padding(16.dp).fillMaxWidth(),
+                                    onClick = {
+                                        when (it) {
+                                            "查看" -> {
+                                                ChoiceImageSplittiesFragment().apply {
+                                                    setOnSelectedBack {
+                                                        Logger.e(it.toString())
+                                                    }
+                                                }.show(parentFragmentManager, null)
+                                            }
+                                            "CoordinatorLayout" -> {
+                                                findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
+                                            }
+                                            "flutter" -> {
+                                                startActivity(
+                                                    FlutterActivity.createDefaultIntent(
+                                                        requireActivity()
+                                                    )
+                                                )
+                                            }
+                                            "anko" -> {
+                                                findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
+                                            }
+                                            "jetpack_compose" -> {
+                                                setState.invoke(1)
+                                            }
+                                            "xml" -> {
+                                                findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
+                                            }
+                                            //hardcode （硬编码）方式跳转module
+                                            "hadrcode" -> {
+                                                try {
+                                                    val intent = Intent()
+                                                    intent.setClassName(
+                                                        requireContext(),
+                                                        "ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
+                                                    )
+                                                    startActivity(intent)
+                                                } catch (e: Exception) {
+                                                    toast("没有跳转目标")
+                                                    Logger.e(e.message ?: "")
+                                                }
+                                            }
+                                        }
 
-                        }, content = { Text(text = it) })
+                                    },
+                                    content = { Text(text = it) })
+                            }
+                        }
                     }
-
+                    1 -> {
+                        mainPage()
+                    }
                 }
             }
-            1 -> {
-                mainPage()
-            }
         }
-
     }
 
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ChoiceImageData>("image_data")
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ChoiceImageData>(
+            "image_data"
+        )
             ?.observe(viewLifecycleOwner, Observer {
                 it?.run {
 
@@ -205,7 +242,15 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
         true // default to enabled
     ) {
         override fun handleOnBackPressed() {
+            val canBack = mainState.value != 0
+            if (canBack) {
+                mainState.value = 0
+            } else {
+                false
+            }
         }
     }
 
 }
+
+

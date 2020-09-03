@@ -19,21 +19,15 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
         // This makes the visual density adapt to the platform that you run
         // the app on. For desktop platforms, the controls will be smaller and
         // closer together (more dense) than on mobile platforms.
         visualDensity: VisualDensity.adaptivePlatformDensity,
       ),
+      routes: {
+        SecondPage.routeName: (context) => SecondPage(),
+      },
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
   }
@@ -71,60 +65,59 @@ class _MyHomePageState extends State<MyHomePage> {
     _loadData();
   }
 
-  void _fabClick() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-
-      sayHello(_counter);
-      show();
-      dowohat();
-    });
-  }
-
-  int a = 2;
-  int b = 3;
-
-  show() => debugPrint('${a ~/ b}'); //取整，0
-
-  sayHello(name) {
-    var a;
-    var b = false;
-    var c = b ? "a" : "b";
-    var input = new Runes(
-        '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
-    debugPrint('Hello $name!' + new String.fromCharCodes(input));
-    debugPrint(c);
-    debugPrint(a ?? "null ");
-    debugPrint(a == c ? "b==c" : "b!=c");
-  }
-
-  dowohat() {
-    var s = 'string interpolation';
-
-    assert('Dart has $s, which is very handy.' ==
-        'Dart has string interpolation, ' + 'which is very handy.');
-    assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
-        'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
-  }
-
+  // void _fabClick() {
+  //   setState(() {
+  //     // This call to setState tells the Flutter framework that something has
+  //     // changed in this State, which causes it to rerun the build method below
+  //     // so that the display can reflect the updated values. If we changed
+  //     // _counter without calling setState(), then the build method would not be
+  //     // called again, and so nothing would appear to happen.
+  //     _counter++;
+  //
+  //     sayHello(_counter);
+  //     show();
+  //     dowohat();
+  //   });
+  // }
+  //
+  // int a = 2;
+  // int b = 3;
+  //
+  // show() => debugPrint('${a ~/ b}'); //取整，0
+  //
+  // sayHello(name) {
+  //   var a;
+  //   var b = false;
+  //   var c = b ? "a" : "b";
+  //   var input = new Runes(
+  //       '\u2665  \u{1f605}  \u{1f60e}  \u{1f47b}  \u{1f596}  \u{1f44d}');
+  //   debugPrint('Hello $name!' + new String.fromCharCodes(input));
+  //   debugPrint(c);
+  //   debugPrint(a ?? "null ");
+  //   debugPrint(a == c ? "b==c" : "b!=c");
+  // }
+  //
+  // dowohat() {
+  //   var s = 'string interpolation';
+  //
+  //   assert('Dart has $s, which is very handy.' ==
+  //       'Dart has string interpolation, ' + 'which is very handy.');
+  //   assert('That deserves all caps. ' + '${s.toUpperCase()} is very handy!' ==
+  //       'That deserves all caps. ' + 'STRING INTERPOLATION is very handy!');
+  // }
+  //
   showLoadingDialog() {
     return widgets.length == 0;
   }
 
-  getProgressDialog() {
-    return new Center(child: new CircularProgressIndicator());
-  }
-
+  // getBody() {
+  //   return WebView(initialUrl: "https://www.qq.com");
+  // }
   getBody() {
     if (showLoadingDialog()) {
       return getProgressDialog();
     } else {
-      return _getList();
+      return mainListView();
     }
   }
 
@@ -134,23 +127,35 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: new AppBar(
         title: new Text(widget.title),
       ),
-      body: getBody(),
+      body: mainListView(),
 
-      floatingActionButton: new FloatingActionButton(
-        onPressed: _fabClick,
-        tooltip: 'Increment',
-        child: new Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      // floatingActionButton: new FloatingActionButton(
+      //   onPressed: _fabClick,
+      //   tooltip: 'Increment',
+      //   child: new Icon(Icons.add),
+      // ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 
   Widget getRow(int i) {
     return new Padding(
         padding: new EdgeInsets.all(10.0),
-        child: new Text("Row ${widgets[i].key}  ${widgets[i].nameKey}"));
+        child: new ListTile(
+          title: Text("Row ${widgets[i].key}  ${widgets[i].nameKey}"),
+          subtitle: Text("subTitle "),
+          onTap: () => {
+            Navigator.pushNamed(context, SecondPage.routeName,
+                arguments:
+                ScreenArguments(widgets[i].canonicalName, widgets[i].key))
+          },
+        ));
   }
 
-  _getList() {
+  getProgressDialog() {
+    return new Center(child: new CircularProgressIndicator());
+  }
+
+  mainListView() {
     return new ListView.builder(
         itemCount: widgets.length,
         itemBuilder: (BuildContext context, int position) {
@@ -177,4 +182,29 @@ class _MyHomePageState extends State<MyHomePage> {
   _insertDataBasr() async {
     var db = await openDatabase('my_db.db');
   }
+}
+
+class SecondPage extends StatelessWidget {
+  static const routeName = '/secondPageArg';
+
+  @override
+  Widget build(BuildContext context) {
+    final ScreenArguments args = ModalRoute.of(context).settings.arguments;
+
+    return new Scaffold(
+      appBar: new AppBar(
+        title: new Text(args.title),
+      ),
+      body: Center(
+        child: Text(args.key.toString()),
+      ),
+    );
+  }
+}
+
+class ScreenArguments {
+  final String title;
+  final int key;
+
+  ScreenArguments(this.title, this.key);
 }

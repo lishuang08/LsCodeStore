@@ -11,8 +11,5 @@ class XmlLntActivity : AppCompatActivity() {
 
     }
 
-    override fun onResume() {
-        super.onResume()
-    }
 
 }

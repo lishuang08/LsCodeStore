@@ -24,8 +24,14 @@ android {
             cmake {
                 cppFlags ""
             }
+            //oboe
+            cmake {
+                arguments "-DANDROID_STL=c++_shared"
+            }
         }
+
     }
+
     signingConfigs {
         config {
             enableV3Signing(true)
@@ -54,6 +60,10 @@ android {
             dimension "flavor"
 
         }
+    }
+    /**oboe*/
+    buildFeatures {
+        prefab true
     }
 
 
@@ -164,12 +174,11 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
 
 dependencies {
     implementation project(":basemodule")
-    implementation project(":firstmodule")
+    implementation project(":ankomodule")
     implementation project(':composemodule')
     implementation project(":flutter")
 
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
-
 
 //    implementation "com.google.dagger:hilt-android:$hilt_version"
 //    kapt "com.google.dagger:hilt-android-compiler:$hilt_version"
@@ -182,6 +191,9 @@ dependencies {
 
     implementation "com.arthenica:mobile-ffmpeg-full:4.3.2"
     implementation "com.quickbirdstudios:opencv:4.1.0-contrib"
+
+
+    implementation 'com.google.oboe:oboe:1.4.3' //oboe 低延迟音频ndk
 
 //    implementation "androidx.ui:ui-core:0.1.0-dev13"
 //    implementation "androidx.ui:ui-tooling:0.1.0-dev13"
