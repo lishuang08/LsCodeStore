@@ -126,7 +126,8 @@ dependencies {
             Other.mmkv,
             Other.agentweb,
             Other.brvah,
-            Other.jsoup
+            Other.jsoup,
+            Other.logger
     )
     api(
             Other.srl_kernel,

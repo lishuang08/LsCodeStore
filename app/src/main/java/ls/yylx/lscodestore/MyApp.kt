@@ -5,7 +5,6 @@ import android.app.ActivityManager
 import android.app.Application
 import android.content.Context
 import android.os.Process
-import com.didichuxing.doraemonkit.DoraemonKit
 import com.orhanobut.logger.AndroidLogAdapter
 import com.orhanobut.logger.Logger
 import com.scwang.smart.refresh.header.MaterialHeader
@@ -46,9 +45,6 @@ class MyApp : BaseAppliacation() {
 
     private fun initLibrary() {
         GlobalScope.launch {
-            if (BuildConfig.DEBUG) {
-                DoraemonKit.install(appCtx)
-            }
 
             Logger.addLogAdapter(object : AndroidLogAdapter() {
                 override fun isLoggable(priority: Int, tag: String?): Boolean {
