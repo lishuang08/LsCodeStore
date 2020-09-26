@@ -9,8 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Job
 import kotlinx.coroutines.MainScope
-import splitties.toast.toast
-
+import org.jetbrains.anko.support.v4.toast
 
 open class BaseFragment : Fragment(), CoroutineScope by MainScope() {
 

@@ -16,11 +16,11 @@ import com.tencent.smtt.sdk.QbSdk
 import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import ls.yylx.lscodestore.basemodule.R
-import splitties.init.appCtx
+import ls.yylx.lscodestore.basemodule.base.BaseAppliacation
 import kotlin.properties.Delegates
 
 //@HiltAndroidApp
-class MyApp : Application() {
+class MyApp : BaseAppliacation() {
     init { //设置全局的Header构建器
         SmartRefreshLayout.setDefaultRefreshHeaderCreator { context, layout ->
             layout.setPrimaryColorsId(R.color.colorPrimary, R.color.white) //全局设置主题颜色
@@ -39,8 +39,7 @@ class MyApp : Application() {
         if (getProcessName(curProcess) != packageName) {
             return
         }
-        instance = this
-
+        appCtx = this
         initLibrary()
     }
 
@@ -48,7 +47,7 @@ class MyApp : Application() {
     private fun initLibrary() {
         GlobalScope.launch {
             if (BuildConfig.DEBUG) {
-                DoraemonKit.install(instance)
+                DoraemonKit.install(appCtx)
             }
 
             Logger.addLogAdapter(object : AndroidLogAdapter() {
@@ -57,7 +56,7 @@ class MyApp : Application() {
                 }
             })
 
-            MMKV.initialize(instance)
+            MMKV.initialize(appCtx)
             MMKV.setLogLevel(if (ls.yylx.lscodestore.basemodule.BuildConfig.DEBUG) MMKVLogLevel.LevelDebug else MMKVLogLevel.LevelNone)
 
 //        LiveEventBus.get().config()
@@ -89,7 +88,6 @@ class MyApp : Application() {
     }
 
     companion object {
-        lateinit var instance: MyApp
 
 
         var cookie: String? = null

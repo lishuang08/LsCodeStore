@@ -21,11 +21,11 @@ import ls.yylx.lscodestore.tool.Tools
 import okhttp3.Interceptor
 import okhttp3.Response
 import okhttp3.ResponseBody
+import org.jetbrains.anko.dimen
+import org.jetbrains.anko.textView
+import org.jetbrains.anko.verticalLayout
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import splitties.resources.dimen
-import splitties.views.dsl.core.textView
-import splitties.views.dsl.core.verticalLayout
 import java.io.*
 import java.util.*
 
@@ -95,12 +95,12 @@ fun BaseDownLoadFragment.openDownLoadFile(
             textView {
                 gravity = Gravity.CENTER_HORIZONTAL
                 text = item.name
-                textSize  =  dimen( R.dimen.text_size_16)
+                textSize  = dimen( R.dimen.text_size_16).toFloat()
             }
             tvPb = textView {
                 gravity = Gravity.CENTER_HORIZONTAL
                 text = "等待下载开始 "
-                textSize  =  dimen( R.dimen.text_size_16)
+                textSize  = dimen( R.dimen.text_size_16).toFloat()
             }
 
             negativeButton(text = "取消") {

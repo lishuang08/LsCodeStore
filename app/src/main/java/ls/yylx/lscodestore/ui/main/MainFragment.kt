@@ -34,15 +34,14 @@ import io.flutter.embedding.android.FlutterActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.R
+import ls.yylx.lscodestore.firstmodule.ChoiceImageData
 import ls.yylx.lscodestore.secondmodule.main.mainPage
 import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
-import ls.yylx.lscodestore.tool.ChoiceImageData
-import ls.yylx.lscodestore.tool.ChoiceImageSplittiesFragment
 import org.jetbrains.anko.*
 import org.jetbrains.anko.custom.customView
+import org.jetbrains.anko.sdk27.coroutines.onClick
 import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.toast
-import splitties.views.onClick
 
 
 class MainFragment : Fragment(), CoroutineScope by MainScope() {
@@ -75,11 +74,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                         onClick {
                             when (str) {
                                 "查看" -> {
-                                    ChoiceImageSplittiesFragment().apply {
-                                        setOnSelectedBack {
-                                            Logger.e(it.toString())
-                                        }
-                                    }.show(parentFragmentManager, null)
+
                                 }
                                 "CoordinatorLayout" -> {
                                     findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
@@ -165,11 +160,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                                     onClick = {
                                         when (it) {
                                             "查看" -> {
-                                                ChoiceImageSplittiesFragment().apply {
-                                                    setOnSelectedBack {
-                                                        Logger.e(it.toString())
-                                                    }
-                                                }.show(parentFragmentManager, null)
+
                                             }
                                             "CoordinatorLayout" -> {
                                                 findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)

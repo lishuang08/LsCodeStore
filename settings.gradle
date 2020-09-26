@@ -4,6 +4,8 @@ include ":ankomodule"
 include ":app"
 //include ":flutter_module"
 
+includeBuild("./LsComposingBuild")
+
 rootProject.name = "LsCodeStore"
 
 setBinding(new Binding([gradle: this]))
@@ -13,3 +15,5 @@ evaluate(new File(
 ))
 
 
+
+include ':flutter_module'

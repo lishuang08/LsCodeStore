@@ -1,17 +1,18 @@
-if (isModule) {
-    apply plugin: 'com.android.library'
-} else {
-    apply plugin: 'com.android.application'
+import ls.yylx.lscodestore.plugin.*
+
+plugins {
+    id "com.android.library"
+    id "kotlin-android"
+    id "kotlin-kapt"
+    id "kotlin-android-extensions"
+    id "ls.yylx.lscodestore.plugin"
+    id "androidx.navigation.safeargs"
 }
 
-apply plugin: 'kotlin-android'
-apply plugin: 'kotlin-kapt'
-apply plugin: 'kotlin-android-extensions'
-apply plugin: 'androidx.navigation.safeargs'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '30.0.1'
+    buildToolsVersion '30.0.2'
 
     defaultConfig {
         minSdkVersion 21
@@ -43,99 +44,77 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    api "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    api 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.8'
-    implementation 'androidx.compose:compose-runtime:0.1.0-dev14'
+
+    api(Kt.kt, Kt.kt_jdk8, Kt.coroutines)
+
+    api 'com.github.microshow:RxFFmpeg:4.8.0'
+
 
 //    /**核心库-anko库 ，dsl动态创建view*/
-    def anko_version = '0.10.8'
-    /**anko*/
-    api "org.jetbrains.anko:anko:$anko_version"
-    api "org.jetbrains.anko:anko-design:$anko_version"
-    api "org.jetbrains.anko:anko-design-coroutines:$anko_version"
-    api "org.jetbrains.anko:anko-support-v4:$anko_version"
-    api "org.jetbrains.anko:anko-constraint-layout:$anko_version"
-    api "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
-    api "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
+    api(
+            Anko.anko,
+            Anko.anko_design,
+            Anko.anko_support,
+            Anko.anko_coroutines,
+            Anko.anko_constraintlayout,
+            Anko.anko_recyclerview,
+            Anko.anko_recyclerview_coroutines
+    )
+
+    api(
+            Androidx.appcompat,
+            Androidx.core,
+            Androidx.constraintlayout,
+            Androidx.collection,
+            Androidx.cardview,
+            Androidx.customview,
+            Androidx.camera_core,
+            Androidx.camera_camera2,
+            Androidx.camera_lifecycle,
+            Androidx.camera_view,
+            Androidx.camera_extensions,
+            Androidx.dynamicanimation,
+            Androidx.fragment,
+            Androidx.lifecycle_viewmodel,
+            Androidx.lifecycle_livedata,
+            Androidx.lifecycle_runtime,
+            Androidx.lifecycle_savestate,
+            Androidx.lifecycle_common,
+            Androidx.lifecycle_service,
+            Androidx.lifecycle_process,
+            Androidx.paging_runtime,
+            Androidx.material,
+            Androidx.nav_fragment,
+            Androidx.nav_ui,
+            Androidx.room_runtime,
+            Androidx.room_ktx,
+            Androidx.recycleview,
+//            Androidx.recycleview_selection,
+            Androidx.viewpager2,
+            Androidx.biometric,
+            Androidx.startup,
+            Androidx.asynclayoutinflater,
+            Androidx.autofill,
+            Androidx.work_ktx
+    )
+
+    kapt(
+            Androidx.kapt_lifecycle_compiler,
+            Androidx.kapt_room_compiler,
+            NetWork.kapt_glide
+    )
 
 
-    /**splitties 替代 anko**/
-    api("com.louiscad.splitties:splitties-fun-pack-android-base:3.0.0-alpha06")
-    api("com.louiscad.splitties:splitties-fun-pack-android-base-with-views-dsl:3.0.0-alpha06")//dsl支持
-    api("com.louiscad.splitties:splitties-fun-pack-android-appcompat:3.0.0-alpha06") //appcompat支持
-    api("com.louiscad.splitties:splitties-fun-pack-android-appcompat-with-views-dsl:3.0.0-alpha06")//appcompat的dsl支持
-    api("com.louiscad.splitties:splitties-fun-pack-android-material-components:3.0.0-alpha06")//material 支持
-    api("com.louiscad.splitties:splitties-fun-pack-android-material-components-with-views-dsl:3.0.0-alpha06")//material 的dsl支持
-    api("com.louiscad.splitties:splitties-views-dsl-ide-preview:3.0.0-alpha06")
-
-
-    /**androidx,各种库*/
-    //基本库 - 最常使用
-    api 'androidx.appcompat:appcompat:ViewPager21.3.0-alpha02'
-    api 'androidx.core:core-ktx:1.3.1'
-    api "androidx.fragment:fragment-ktx:1.3.0-alpha08"
-    api "androidx.navigation:navigation-fragment-ktx:$nav_version"
-    api "androidx.navigation:navigation-ui-ktx:$nav_version"
-    //    api "androidx.navigation:navigation-dynamic-features-fragment:2.3.0-SNAPSHOT"
-
-    //页面
-    api "androidx.recyclerview:recyclerview:1.1.0"
-    api "androidx.recyclerview:recyclerview-selection:1.1.0-rc01"//用于控制触摸和鼠标驱动的选择
-    api 'androidx.constraintlayout:constraintlayout:2.0.1' //约束布局
-    api 'androidx.viewpager2:viewpager2:1.0.0' //viewpager2
-    api "androidx.paging:paging-runtime-ktx:3.0.0-alpha05" // paging3分页加载
-
-    //其他
-    api "androidx.biometric:biometric:1.0.1" //生物识别
-    api "androidx.startup:startup-runtime:1.0.0-alpha03"//启动
-    api "androidx.asynclayoutinflater:asynclayoutinflater:1.0.0"//异步布局填充
-    api "androidx.autofill:autofill:1.0.0" //自动填写
-    api "androidx.browser:browser:1.2.0" //打开浏览器，传递数据
-    api "androidx.work:work-runtime-ktx:2.4.0" //WorkManager,应用退出也可以完成
-
-
-    api "androidx.room:room-runtime:$room_version"
-    kapt "androidx.room:room-compiler:$room_version"
-    api "androidx.room:room-ktx:$room_version"
-
-    // camerax库
-    def camerax_version = "1.0.0-beta08"
-    api "androidx.camera:camera-core:${camerax_version}" //相机库
-    api "androidx.camera:camera-camera2:${camerax_version}"//可选，camera2，因为core间接的包含camera2
-    api "androidx.camera:camera-lifecycle:${camerax_version}"//可选，使用camera-lifecycle库
-    api "androidx.camera:camera-view:1.0.0-alpha14"//可选，使用 CameraX View
-    api "androidx.camera:camera-extensions:1.0.0-alpha14" //可选，使用  CameraX 扩展库
-
-    // lifecycle库
-    def lifecycle_version = "2.3.0-alpha07"
-    api "androidx.lifecycle:lifecycle-viewmodel-ktx:${lifecycle_version}"
-    api "androidx.lifecycle:lifecycle-livedata-ktx:${lifecycle_version}"
-    api "androidx.lifecycle:lifecycle-runtime-ktx:${lifecycle_version}"
-    api "androidx.lifecycle:lifecycle-common-java8:${lifecycle_version}"
-    api "androidx.lifecycle:lifecycle-reactivestreams-ktx:${lifecycle_version}"
-    api "androidx.lifecycle:lifecycle-extensions:2.2.0"
-
-
-    api "androidx.biometric:biometric:1.0.1"//指纹库
-    api 'com.google.android.material:material:1.3.0-alpha02' //样式库
-
-
-    /**网络相关*/
-    def retrofit2_version = '2.9.0'
-    api "com.squareup.retrofit2:retrofit:$retrofit2_version"
-    api "com.squareup.retrofit2:converter-gson:$retrofit2_version"
-    def okhttp3_version = '4.7.2'
-    api "com.squareup.okhttp3:okhttp:$okhttp3_version"
-    api "com.squareup.okhttp3:logging-interceptor:$okhttp3_version"
-    def glide_version = '4.11.0'
-    api "com.github.bumptech.glide:glide:$glide_version"
-    api "com.github.bumptech.glide:okhttp3-integration:$glide_version"
-    api("com.github.bumptech.glide:recyclerview-integration:$glide_version") {
-        transitive = false
-    }
-    kapt "com.github.bumptech.glide:compiler:$glide_version"
-
+    api(
+            NetWork.retrofit,
+            NetWork.retrofit_gson,
+            NetWork.coil,
+            NetWork.okhttp,
+            NetWork.okhttp_logging,
+            NetWork.glide,
+            NetWork.glide_recyclerview,
+            NetWork.glide_okhttp3
+    )
 
     api 'de.hdodenhof:circleimageview:3.1.0' //圆形图片库
     api 'com.github.chrisbanes:PhotoView:2.3.0' //图片缩放
@@ -145,8 +124,8 @@ dependencies {
     api 'com.orhanobut:logger:2.2.0' //log打印库
     api 'com.google.code.gson:gson:2.8.6' // gson
     api 'com.github.salomonbrys.kotson:kotson:2.5.0' //gson 库的kotlin版本
-    api 'com.tencent:mmkv-static:1.0.23' // 替代sp的库，高效，稳定，基于protobuf的本地储存库
-    api 'com.just.agentweb:agentweb:4.0.3-beta' // webview库
+    api 'com.tencent:mmkv-static:1.2.1' // 替代sp的库，高效，稳定，基于protobuf的本地储存库
+    api 'com.just.agentweb:agentweb:4.1.3' // webview库
     api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4' //recycleview的adapter库
     api 'org.jsoup:jsoup:1.13.1' //解析html数据的库
     //下拉刷新库
@@ -168,9 +147,5 @@ dependencies {
     api "com.afollestad.material-dialogs:files:$md_version"//文件选择库
     api "com.afollestad.material-dialogs:input:$md_version" //输入框样式
 
-
-    testImplementation 'junit:junit:4.13'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.1'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
 
 }
