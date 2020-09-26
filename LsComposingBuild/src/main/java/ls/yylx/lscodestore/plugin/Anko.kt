@@ -2,17 +2,17 @@ package ls.yylx.lscodestore.plugin
 
 object Anko {
 
-    val anko_version = "0.10.8"
+
 
     /**anko*/
-    val anko = "org.jetbrains.anko:anko:$anko_version"
-    val anko_design = "org.jetbrains.anko:anko-design:$anko_version"
-    val anko_coroutines = "org.jetbrains.anko:anko-design-coroutines:$anko_version"
-    val anko_support = "org.jetbrains.anko:anko-support-v4:$anko_version"
-    val anko_constraintlayout = "org.jetbrains.anko:anko-constraint-layout:$anko_version"
-    val anko_recyclerview = "org.jetbrains.anko:anko-recyclerview-v7:$anko_version"
+    val anko = "org.jetbrains.anko:anko:${Versions.anko_version}"
+    val anko_design = "org.jetbrains.anko:anko-design:${Versions.anko_version}"
+    val anko_coroutines = "org.jetbrains.anko:anko-design-coroutines:${Versions.anko_version}"
+    val anko_support = "org.jetbrains.anko:anko-support-v4:${Versions.anko_version}"
+    val anko_constraintlayout = "org.jetbrains.anko:anko-constraint-layout:${Versions.anko_version}"
+    val anko_recyclerview = "org.jetbrains.anko:anko-recyclerview-v7:${Versions.anko_version}"
     val anko_recyclerview_coroutines =
-        "org.jetbrains.anko:anko-recyclerview-v7-coroutines:$anko_version"
+        "org.jetbrains.anko:anko-recyclerview-v7-coroutines:${Versions.anko_version}"
 
 
 

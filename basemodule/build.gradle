@@ -47,10 +47,9 @@ dependencies {
 
     api(Kt.kt, Kt.kt_jdk8, Kt.coroutines)
 
-    api 'com.github.microshow:RxFFmpeg:4.8.0'
 
+    api(Other.rxffmpeg)
 
-//    /**核心库-anko库 ，dsl动态创建view*/
     api(
             Anko.anko,
             Anko.anko_design,
@@ -116,36 +115,34 @@ dependencies {
             NetWork.glide_okhttp3
     )
 
-    api 'de.hdodenhof:circleimageview:3.1.0' //圆形图片库
-    api 'com.github.chrisbanes:PhotoView:2.3.0' //图片缩放
-//    api 'com.jeremyliao:live-event-bus-x:1.5.1'//替代eventbus，基于livedata的通讯库，可以跨进程
-    api 'cn.bingoogolapple:bga-qrcode-zbar:1.3.6'//高效二维码库，基于zbar
-    api 'com.jaeger.statusbarutil:library:1.5.1' //statusbar库
-    api 'com.orhanobut:logger:2.2.0' //log打印库
-    api 'com.google.code.gson:gson:2.8.6' // gson
-    api 'com.github.salomonbrys.kotson:kotson:2.5.0' //gson 库的kotlin版本
-    api 'com.tencent:mmkv-static:1.2.1' // 替代sp的库，高效，稳定，基于protobuf的本地储存库
-    api 'com.just.agentweb:agentweb:4.1.3' // webview库
-    api 'com.github.CymChad:BaseRecyclerViewAdapterHelper:3.0.4' //recycleview的adapter库
-    api 'org.jsoup:jsoup:1.13.1' //解析html数据的库
-    //下拉刷新库
-    def srl_version = '2.0.1'
-    api "com.scwang.smart:refresh-layout-kernel:$srl_version"      //核心必须依赖
-    api "com.scwang.smart:refresh-header-classics:$srl_version"    //经典刷新头
-//    api  "com.scwang.smart:refresh-header-radar:$srl_version"       //雷达刷新头
-//    api  "com.scwang.smart:refresh-header-falsify:$srl_version"     //虚拟刷新头
-    api "com.scwang.smart:refresh-header-material:$srl_version"    //谷歌刷新头
-//    api  "com.scwang.smart:refresh-header-two-level:$srl_version"   //二级刷新头
-//    api  "com.scwang.smart:refresh-footer-ball:$srl_version"        //球脉冲加载
-    api "com.scwang.smart:refresh-footer-classics:$srl_version"    //经典加载
 
-    //material design风格的dialog库
-    def md_version = '3.3.0'
-    api "com.afollestad.material-dialogs:core:$md_version" //核心库
-    api "com.afollestad.material-dialogs:lifecycle:$md_version"//lifecycle支持
-    api "com.afollestad.material-dialogs:datetime:$md_version"//日期选择酷
-    api "com.afollestad.material-dialogs:files:$md_version"//文件选择库
-    api "com.afollestad.material-dialogs:input:$md_version" //输入框样式
+    api(Other.circleimageview,
+            Other.photoview,
+//            Other.live_event_bus_x,
+            Other.qrcode_zbar,
+            Other.sttusbar,
+            Other.gson,
+            Other.kotson,
+            Other.mmkv,
+            Other.agentweb,
+            Other.brvah,
+            Other.jsoup
+    )
+    api(
+            Other.srl_kernel,
+            Other.srl_classics,
+            Other.srl_material,
+            Other.srl_footer,
+//            Other.srl_radar,
+//            Other.srl_falsify,
+//            Other.srl_two_level,
+//            Other.srl_ball,
+            Other.material_dialog,
+            Other.material_lifecycle,
+            Other.material_datetime,
+            Other.material_files,
+            Other.material_input
+    )
 
 
 }
