@@ -5,19 +5,30 @@ import WebContext
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.compose.foundation.Box
 import androidx.compose.foundation.ScrollableColumn
+import androidx.compose.foundation.ScrollableRow
+import androidx.compose.foundation.Text
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.material.Button
+import androidx.compose.material.MaterialTheme
+import androidx.compose.material.TextButton
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.setContent
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.viewinterop.AndroidView
 import ls.yylx.lscodestore.basemodule.GbifRoomViewModel
 import ls.yylx.lscodestore.basemodule.db.Specie
 import ls.yylx.lscodestore.secondmodule.base.*
+import ls.yylx.lscodestore.secondmodule.custom.ComposeViewPager
 import ls.yylx.lscodestore.secondmodule.main.ui.columnView
+import ls.yylx.lscodestore.secondmodule.main.ui.pages
 import org.jetbrains.anko.UI
 import org.jetbrains.anko.webView
 
@@ -27,9 +38,11 @@ class ComposeMainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            mainPage()
+//            mainPage()
+
         }
     }
+
 
     val gbifVm by viewModels<GbifRoomViewModel>()
 
@@ -88,7 +101,6 @@ fun mainPage() {
 
         }
         is State_Page0 -> {
-
             ScrollableColumn(modifier = Modifier.padding(16.dp)) {
                 WebComponent("http://www.qq.com", webContext = WebContext())
             }
@@ -104,5 +116,66 @@ fun mainPage() {
         }
 
 
+    }
+}
+
+@Composable
+fun vpMain() {
+    MaterialTheme {
+        val mState = remember { mutableStateOf(0) }
+
+        ScrollableColumn() {
+            ScrollableRow() {
+                pages.forEachIndexed { index, s ->
+                    Button({
+                        mState.value = index
+                    }, Modifier.padding(16.dp)) {
+                        Text(text = s)
+                    }
+                }
+            }
+            Box(backgroundColor = Color.Red, modifier = Modifier.fillMaxSize()) {
+                ComposeViewPager(range = IntRange(0, Int.MAX_VALUE)) {
+                    Box(
+                        modifier = Modifier.fillMaxSize().padding(8.dp),
+                        backgroundColor = Color.Blue
+                    ) {
+                        Text("Index: $index", Modifier.padding(8.dp))
+
+                        Row {
+                            TextButton(
+                                onClick = { previous() },
+                                modifier = Modifier.padding(8.dp),
+                                backgroundColor = Color.Red
+                            ) {
+                                Text("Previous", color = Color.White)
+                            }
+
+                            TextButton(
+                                onClick = { next() },
+                                modifier = Modifier.padding(8.dp),
+                                backgroundColor = Color.Red
+                            ) {
+                                Text("Next", color = Color.White)
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+    }
+}
+
+inline fun show(block: () -> Unit) {
+    println("infunction")
+    block()
+}
+
+fun main(){
+    for(i in 1..100){
+        show {
+            println("inline")
+        }
     }
 }

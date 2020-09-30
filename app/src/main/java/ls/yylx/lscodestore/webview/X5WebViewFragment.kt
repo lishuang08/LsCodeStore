@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.FrameLayout
+import androidx.activity.OnBackPressedCallback
 import androidx.core.net.toUri
 import com.orhanobut.logger.Logger
 import com.tencent.smtt.sdk.WebViewClient
@@ -72,6 +73,19 @@ class X5WebViewFragment : BaseDownLoadFragment() {
             )
 
         }
+
+
+        requireActivity().onBackPressedDispatcher.addCallback(viewLifecycleOwner, object : OnBackPressedCallback(true) {
+            override fun handleOnBackPressed() {
+                var interceptor  = false
+                if(interceptor){
+                    // 实现拦截逻辑
+                }else{
+                    isEnabled = false
+                    requireActivity().onBackPressed()
+                }
+            }
+        })
 
     }
 

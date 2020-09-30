@@ -6,6 +6,7 @@ apply plugin: "androidx.navigation.safeargs"
 //apply plugin: 'dagger.hilt.android.plugin'
 //apply plugin: 'koin'
 //apply plugin: "com.didi.dokit"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -29,7 +30,6 @@ android {
                 arguments "-DANDROID_STL=c++_shared"
             }
         }
-
     }
 
     signingConfigs {
@@ -121,7 +121,6 @@ android {
     composeOptions {
         kotlinCompilerVersion "1.4.0"
         kotlinCompilerExtensionVersion "${compose_version}"
-
     }
 
 }
@@ -201,8 +200,8 @@ dependencies {
 //    implementation "androidx.ui:ui-material:0.1.0-dev13"
 
 
-    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
-    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
+//    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
+//    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
 //    debugImplementation "com.squareup.leakcanary:leakcanary-android:2.4"
 //    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
 //    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"

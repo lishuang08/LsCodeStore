@@ -6,6 +6,8 @@ include ":app"
 
 rootProject.name = "LsCodeStore"
 
+//includeBuild(":versionModule")
+
 setBinding(new Binding([gradle: this]))
 evaluate(new File(
         settingsDir.parentFile,

@@ -25,8 +25,8 @@
             android:id="@+id/action_mainFragment_to_customFragment"
             app:destination="@id/customFragment" />
         <action
-            android:id="@+id/action_mainFragment_to_secondMainActivity"
-            app:destination="@id/secondMainActivity" />
+            android:id="@+id/action_mainFragment_to_composeMainActivity"
+            app:destination="@id/composeMainActivity" />
         <action
             android:id="@+id/action_mainFragment_to_xmlLntActivity"
             app:destination="@id/xmlLntActivity" />
@@ -56,9 +56,9 @@
         android:name="ls.yylx.lscodestore.ui.main.CustomFragment"
         android:label="CustomFragment" />
     <activity
-        android:id="@+id/secondMainActivity"
+        android:id="@+id/composeMainActivity"
         android:name="ls.yylx.lscodestore.secondmodule.main.ComposeMainActivity"
-        android:label="SecondMainActivity" />
+        android:label="ComposeMainActivity" />
     <activity
         android:id="@+id/xmlLntActivity"
         android:name="ls.yylx.lscodestore.secondmodule.main.XmlLntActivity"

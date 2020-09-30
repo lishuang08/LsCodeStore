@@ -1,6 +1,7 @@
 package ls.yylx.lscodestore
 
 import android.os.Bundle
+import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
@@ -18,7 +19,6 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     val gbifVm by viewModels<GbifViewModel>()
 
 
-
     val navController by lazy {
         findNavController(R.id.fragment_main_relase)
 //        if (resources.getBoolean(R.bool.isModule)) {
@@ -28,11 +28,22 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 //        }
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.main_activity_relase)
 
 
+        var start = true
+        Looper.getMainLooper().setMessageLogging {
+            if (start) {
+                println("start$it")
+                start = false
+            } else {
+                println("end$it")
+                start = true
+            }
+        }
 
         gbifVm.updateSpecies()
 

@@ -34,7 +34,7 @@ import io.flutter.embedding.android.FlutterActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.R
-import ls.yylx.lscodestore.secondmodule.main.mainPage
+import ls.yylx.lscodestore.secondmodule.main.vpMain
 import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
 import ls.yylx.lscodestore.tool.ChoiceImageData
 import ls.yylx.lscodestore.tool.ChoiceImageSplittiesFragment
@@ -93,7 +93,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                                     findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
                                 }
                                 "jetpack_compose" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_secondMainActivity)
+                                    findNavController().navigate(R.id.action_mainFragment_to_composeMainActivity)
                                 }
                                 "xml" -> {
                                     findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
@@ -212,7 +212,8 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                         }
                     }
                     1 -> {
-                        mainPage()
+//                        mainPage()
+                        vpMain()
                     }
                 }
             }
