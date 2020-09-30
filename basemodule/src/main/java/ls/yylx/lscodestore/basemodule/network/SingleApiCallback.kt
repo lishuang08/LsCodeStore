@@ -1,10 +1,11 @@
 package ls.yylx.lscodestore.basemodule.network
 
 import com.orhanobut.logger.Logger
+import ls.yylx.lscodestore.basemodule.base.BaseAppliacation.Companion.appCtx
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import splitties.init.appCtx
+
 
 
 abstract class SingleApiCallback<T> : Callback<T> {

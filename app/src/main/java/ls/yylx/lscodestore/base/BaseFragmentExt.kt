@@ -12,15 +12,7 @@ import androidx.fragment.app.Fragment
 import com.bumptech.glide.Glide
 import com.github.chrisbanes.photoview.PhotoView
 import ls.yylx.lscodestore.R
-import splitties.alertdialog.appcompat.alertDialog
-import splitties.dimensions.dip
-import splitties.experimental.InternalSplittiesApi
-import splitties.resources.dimenPxSize
-import splitties.views.dsl.constraintlayout.constraintLayout
-import splitties.views.dsl.constraintlayout.lParams
-import splitties.views.dsl.core.matchParent
-import splitties.views.dsl.core.view
-import splitties.views.padding
+import org.jetbrains.anko.dip
 
 
 /**
@@ -130,20 +122,6 @@ fun Fragment.showChoicePopWindow(pop: PopupWindow?, v: View): PopupWindow {
 }
 
 
-@InternalSplittiesApi
-fun BaseFragment.alertPhoto(path: String) {
-    requireContext().alertDialog {
-        setView(requireContext().constraintLayout {
-            view<PhotoView> {
-                Glide.with(requireContext()).load(path).centerInside().into(this)
-                lParams(matchParent, 0)  {
-                    dimensionRatio = "h,1:1.5"
-                    padding = dip(4)
-                }
-            }
-        })
-    }.show()
-}
 
 //fun Fragment.openFile(filePath: String) {
 //    val file = File(filePath)

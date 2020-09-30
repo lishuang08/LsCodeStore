@@ -1,5 +1,7 @@
 package ls.yylx.lscodestore.algorithms
 
+import org.jetbrains.anko.collections.forEachWithIndex
+
 class e {
     fun numDecodings(s: String): Int {
         if (s.isEmpty() || s[0] == '0') return 0
@@ -30,9 +32,12 @@ class e {
     }
 
 
+    fun solveSudoku(board: Array<CharArray>): Unit {
+        board.forEachIndexed { h, chars ->
+            chars.forEachIndexed { w, c ->
 
-
-
-
+            }
+        }
+    }
 
 }

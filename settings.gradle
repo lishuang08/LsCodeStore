@@ -4,6 +4,8 @@ include ":ankomodule"
 include ":app"
 //include ":flutter_module"
 
+includeBuild("./LsComposingBuild")
+
 rootProject.name = "LsCodeStore"
 
 //includeBuild(":versionModule")
@@ -15,3 +17,5 @@ evaluate(new File(
 ))
 
 
+
+include ':flutter_module'

@@ -70,13 +70,7 @@ class ComposeMainActivity : AppCompatActivity() {
         }
     }
 
-    @Composable
-    fun addAndroidView() {
-        val v = WebUi(this)
-        v.web.loadUrl("https://www.qq.com")
-        AndroidView({ v.root }, modifier = Modifier.padding(16.dp))
-    }
-
+   
 }
 
 val list by lazy(LazyThreadSafetyMode.NONE) {

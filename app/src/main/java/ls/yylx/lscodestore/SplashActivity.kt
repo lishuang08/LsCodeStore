@@ -7,9 +7,7 @@ import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
-import splitties.views.dsl.core.Ui
-import splitties.views.dsl.core.frameLayout
-import splitties.views.dsl.core.setContentView
+import org.jetbrains.anko.frameLayout
 
 class SplashActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
@@ -19,15 +17,12 @@ class SplashActivity : AppCompatActivity(), CoroutineScope by MainScope() {
             finish()
             return
         }
-        setContentView(object : Ui {
-            override val ctx: Context = this@SplashActivity
+       frameLayout {
 
-            override val root: View = frameLayout {
+       }
 
-            }
-        })
+
         startActivity(Intent(this@SplashActivity, MainActivity::class.java))
-//        startActivity(Intent(this@SplashActivity, SecondMainActivity::class.java))
         finish()
     }
 }

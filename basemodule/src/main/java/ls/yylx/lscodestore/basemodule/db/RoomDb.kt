@@ -3,7 +3,8 @@ package ls.yylx.lscodestore.basemodule.db
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import splitties.init.appCtx
+import ls.yylx.lscodestore.basemodule.base.BaseAppliacation
+import ls.yylx.lscodestore.basemodule.base.BaseAppliacation.Companion.appCtx
 
 
 @Database(entities = [Specie::class], version = 4)

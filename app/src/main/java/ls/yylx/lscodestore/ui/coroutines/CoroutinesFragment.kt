@@ -14,8 +14,7 @@ import kotlinx.coroutines.channels.consumeEach
 import kotlinx.coroutines.channels.produce
 import ls.yylx.lscodestore.R
 import ls.yylx.lscodestore.base.BaseFragment
-import splitties.views.dsl.core.Ui
-import splitties.views.dsl.core.frameLayout
+import org.jetbrains.anko.frameLayout
 import kotlin.system.measureTimeMillis
 
 
