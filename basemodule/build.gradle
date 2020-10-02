@@ -7,16 +7,17 @@ plugins {
     id "kotlin-android-extensions"
     id "ls.yylx.lscodestore.plugin"
     id "androidx.navigation.safeargs"
+
+    id "com.huawei.agconnect"
 }
 
-
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     buildToolsVersion '30.0.2'
 
     defaultConfig {
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -72,6 +73,9 @@ dependencies {
             Androidx.camera_lifecycle,
             Androidx.camera_view,
             Androidx.camera_extensions,
+
+            Androidx.customview ,
+
             Androidx.dynamicanimation,
             Androidx.fragment,
             Androidx.lifecycle_viewmodel,
@@ -144,6 +148,7 @@ dependencies {
             Other.material_files,
             Other.material_input
     )
+
 
 
 }

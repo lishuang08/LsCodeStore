@@ -38,7 +38,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:replace="android:name">
-<!--        android:requestLegacyExternalStorage="true"-->
+        <!--        android:requestLegacyExternalStorage="true"-->
         <activity
             android:name=".MainActivity"
             android:configChanges="orientation|screenSize"
@@ -47,7 +47,7 @@
         </activity>
         <activity
             android:name=".SplashActivity"
-          
+
             android:configChanges="orientation|screenSize"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -87,6 +87,10 @@
         <!--        </provider>-->
 
 
+<!--        自动更新model-->
+        <meta-data
+            android:name="com.huawei.hms.ml.DEPENDENCY"
+            android:value="ocr" />
     </application>
 
 </manifest>

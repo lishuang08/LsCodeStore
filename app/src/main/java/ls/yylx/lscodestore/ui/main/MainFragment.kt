@@ -1,5 +1,7 @@
 package ls.yylx.lscodestore.ui.main
 
+import android.Manifest
+import android.app.Activity.RESULT_OK
 import android.content.Intent
 import android.os.Bundle
 import android.util.SparseArray
@@ -28,19 +30,19 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navGraphViewModels
 import androidx.ui.tooling.preview.Preview
-import com.google.android.material.button.MaterialButton
+import com.huawei.hms.hmsscankit.ScanUtil
+import com.huawei.hms.ml.scan.HmsScan
+import com.huawei.hms.ml.scan.HmsScanAnalyzer
+import com.huawei.hms.ml.scan.HmsScanAnalyzerOptions
 import com.orhanobut.logger.Logger
 import io.flutter.embedding.android.FlutterActivity
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.R
+import ls.yylx.lscodestore.basemodule.checkArrayPermissions
 import ls.yylx.lscodestore.firstmodule.ChoiceImageData
 import ls.yylx.lscodestore.secondmodule.main.mainPage
 import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
-import org.jetbrains.anko.*
-import org.jetbrains.anko.custom.customView
-import org.jetbrains.anko.sdk27.coroutines.onClick
-import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.toast
 
 
@@ -63,59 +65,59 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ) = if (isCompose) cView else aView
+    ) =   cView
 
-    val aView by lazy(LazyThreadSafetyMode.NONE) {
-        UI {
-            verticalLayout {
-                list.forEach { str ->
-                    customView<MaterialButton> {
-                        text = str
-                        onClick {
-                            when (str) {
-                                "查看" -> {
-
-                                }
-                                "CoordinatorLayout" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
-                                }
-                                "flutter" -> {
-                                    requireContext().startActivity(
-                                        FlutterActivity.createDefaultIntent(requireActivity())
-                                    )
-                                }
-                                "anko" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
-                                }
-                                "jetpack_compose" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_secondMainActivity)
-                                }
-                                "xml" -> {
-                                    findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
-                                }
-                                //hardcode （硬编码）方式跳转module
-                                "hadrcode" -> {
-                                    try {
-                                        val intent = Intent()
-                                        intent.setClassName(
-                                            requireContext(),
-                                            "ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
-                                        )
-                                        startActivity(intent)
-                                    } catch (e: Exception) {
-                                        toast("没有跳转目标")
-                                        Logger.e(e.message ?: "")
-                                    }
-                                }
-                            }
-                        }
-                    }.lparams(matchParent, wrapContent) {
-                        margin = dip(16)
-                    }
-                }
-            }
-        }.view
-    }
+//    val aView by lazy(LazyThreadSafetyMode.NONE) {
+//        UI {
+//            verticalLayout {
+//                list.forEach { str ->
+//                    customView<MaterialButton> {
+//                        text = str
+//                        onClick {
+//                            when (str) {
+//                                "查看" -> {
+//
+//
+//                                }
+//                                "CoordinatorLayout" -> {
+//                                    findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
+//                                }
+//                                "flutter" -> {
+//                                    requireContext().startActivity(
+//                                        FlutterActivity.createDefaultIntent(requireActivity())
+//                                    )
+//                                }
+//                                "anko" -> {
+//                                    findNavController().navigate(R.id.action_mainFragment_to_ankoTestActivity)
+//                                }
+//                                "jetpack_compose" -> {
+//                                }
+//                                "xml" -> {
+//                                    findNavController().navigate(R.id.action_mainFragment_to_xmlLntActivity)
+//                                }
+//                                //hardcode （硬编码）方式跳转module
+//                                "hadrcode" -> {
+//                                    try {
+//                                        val intent = Intent()
+//                                        intent.setClassName(
+//                                            requireContext(),
+//                                            "ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
+//                                        )
+//                                        startActivity(intent)
+//                                    } catch (e: Exception) {
+//                                        toast("没有跳转目标")
+//                                        Logger.e(e.message ?: "")
+//                                    }
+//                                }
+//                            }
+//                        }
+//                    }.lparams(matchParent, wrapContent) {
+//                        margin = dip(16)
+//                    }
+//                }
+//            }
+//        }.view
+//    }
 
     val cView
         get() = ComposeView(requireContext()).apply {
@@ -160,6 +162,35 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                                     onClick = {
                                         when (it) {
                                             "查看" -> {
+                                                checkArrayPermissions(arrayOf(Manifest.permission.CAMERA)) {
+                                                    if (it) {
+
+                                                        //“QRCODE_SCAN_TYPE”和“DATAMATRIX_SCAN_TYPE表示只扫描QR和Data Matrix的码
+                                                        val options =
+                                                            HmsScanAnalyzerOptions.Creator()
+                                                                .setHmsScanTypes(
+                                                                    HmsScan.QRCODE_SCAN_TYPE,
+                                                                    HmsScan.DATAMATRIX_SCAN_TYPE
+                                                                ).create()
+
+                                                        val barcodeDetector =
+                                                            HmsScanAnalyzer(options)
+//                                                        val image = MLFrame.fromBitmap(bitmap)
+
+//                                                        val result =
+//                                                            barcodeDetector.analyseFrame(image)
+//展示扫码结果
+//展示扫码结果
+
+                                                        ScanUtil.startScan(
+                                                            requireActivity(),
+                                                            100111,
+                                                            options
+                                                        )
+                                                    } else {
+                                                        toast("没有相机权限，无法拍照")
+                                                    }
+                                                }
 
                                             }
                                             "CoordinatorLayout" -> {
@@ -241,6 +272,22 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
             }
         }
     }
+
+      override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode != RESULT_OK || data == null) {
+            return
+        }
+        if (requestCode == 100111) {
+            val obj: HmsScan = data.getParcelableExtra(ScanUtil.RESULT)!!
+            obj?.let {
+
+                Logger.e(it.toString())
+
+            }
+        }
+    }
+
 
 }
 

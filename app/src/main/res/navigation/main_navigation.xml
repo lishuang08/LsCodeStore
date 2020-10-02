@@ -33,6 +33,9 @@
         <action
             android:id="@+id/action_mainFragment_to_ankoTestActivity"
             app:destination="@id/ankoTestActivity" />
+        <action
+            android:id="@+id/action_mainFragment_to_cameraxFragment"
+            app:destination="@id/cameraxFragment" />
     </fragment>
 
 
@@ -41,7 +44,6 @@
         android:id="@+id/x5WebViewFragment"
         android:name="ls.yylx.lscodestore.webview.X5WebViewFragment"
         android:label="X5WebViewFragment" />
-
 
     <fragment
         android:id="@+id/coordinatorLayoutFragment"
@@ -67,4 +69,8 @@
         android:id="@+id/ankoTestActivity"
         android:name="ls.yylx.lscodestore.firstmodule.ui.main.AnkoTestActivity"
         android:label="AnkoTestActivity" />
+    <fragment
+        android:id="@+id/cameraxFragment"
+        android:name="ls.yylx.lscodestore.qrcode.CameraxFragment"
+        android:label="CameraxFragment" />
 </navigation>

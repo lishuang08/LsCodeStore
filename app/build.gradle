@@ -1,4 +1,5 @@
 import ls.yylx.lscodestore.plugin.*
+
 plugins {
     id "com.android.application"
     id "kotlin-android"
@@ -130,8 +131,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion "1.4.0"
-        kotlinCompilerExtensionVersion "${compose_version}"
+        kotlinCompilerVersion Versions.kotlin_version
+        kotlinCompilerExtensionVersion Versions.compose_version
 
     }
 
@@ -150,17 +151,20 @@ dependencies {
     implementation project(":flutter")
 
 
+//
+//     implementation(Other.ffmpeg,
+//            Other.opencv,
+//            Other.oboe
+//    )
 
-    implementation(Other.ffmpeg,
-            Other.opencv,
-            Other.oboe
-    )
-
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.4'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 //    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
 //    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
 
-
+//    hms
+    implementation(
+            Hms.scan
+    )
 
     testImplementation "junit:junit:4.13"
     androidTestImplementation "androidx.test.ext:junit:1.1.2"

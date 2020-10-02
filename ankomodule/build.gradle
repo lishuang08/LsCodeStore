@@ -1,4 +1,3 @@
-import ls.yylx.lscodestore.plugin.*
 plugins {
     id "com.android.library"
     id "kotlin-android"
@@ -41,7 +40,7 @@ android {
 }
 
 dependencies {
-    implementation project(':basemodule')
+    api project(':basemodule')
 
 
 

@@ -2,7 +2,8 @@ include ":basemodule"
 include ':composemodule'
 include ":ankomodule"
 include ":app"
-//include ":flutter_module"
+include ":flutter_module"
+//include ":version_plugins"
 
 includeBuild("./LsComposingBuild")
 
@@ -18,4 +19,3 @@ evaluate(new File(
 
 
 
-include ':flutter_module'

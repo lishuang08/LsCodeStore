@@ -1,5 +1,4 @@
 import ls.yylx.lscodestore.plugin.*
-
 plugins {
     id "com.android.library"
     id "kotlin-android"
@@ -19,7 +18,7 @@ android {
 //        }
 
         minSdkVersion 21
-        targetSdkVersion 29
+        targetSdkVersion 30
         versionCode 1
         versionName "1.0"
 
@@ -42,8 +41,8 @@ android {
         compose true
     }
     composeOptions {
-        kotlinCompilerVersion "1.4.0"
-        kotlinCompilerExtensionVersion "${compose_version}"
+        kotlinCompilerVersion Versions.kotlin_version
+        kotlinCompilerExtensionVersion Versions.compose_version
 
     }
 
@@ -55,7 +54,7 @@ tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
     }
 }
 dependencies {
-    implementation project(':basemodule')
+    api  project(':basemodule')
     api(
             JetpackCompose.ui,
             JetpackCompose.ui_tooling,
@@ -68,4 +67,5 @@ dependencies {
             JetpackCompose.androidTestImplementation_test
     )
 
+//    kapt(JetpackCompose)
 }
