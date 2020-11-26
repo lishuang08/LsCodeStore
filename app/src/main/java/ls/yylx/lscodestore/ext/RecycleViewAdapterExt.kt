@@ -1,4 +1,4 @@
-package ls.yylx.lscodestore.base.ext
+package ls.yylx.lscodestore.ext
 
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView

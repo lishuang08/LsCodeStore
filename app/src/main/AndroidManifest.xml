@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="ls.yylx.lscodestore">
 
-    <uses-feature
-        android:name="android.hardware.camera"
-        android:required="true" />
+    <uses-feature android:name="android.hardware.camera.any"
+        android:required="true"/>
     <uses-feature android:name="android.hardware.camera.autofocus" /> <!-- &lt;!&ndash;二维码震动&ndash;&gt; -->
+    <uses-permission android:name="android.permission.RECORD_AUDIO" />
     <!-- <uses-permission android:name="android.permission.VIBRATE"/> -->
     <!-- 读写文件 -->
     <uses-permission android:name="android.permission.CAMERA" />
@@ -27,7 +27,6 @@
 
     <application
         android:name=".MyApp"
-
         android:allowBackup="true"
         android:configChanges="orientation|screenSize"
         android:icon="@mipmap/ic_launcher"

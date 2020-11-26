@@ -2,7 +2,7 @@ package ls.yylx.lscodestore.plugin
 
 object Versions {
     val anko_version = "0.10.8"
-    val compose_version = "1.0.0-alpha04"
+    val compose_version = "1.0.0-alpha07"
 
     val kotlin_version = "1.4.10"
 

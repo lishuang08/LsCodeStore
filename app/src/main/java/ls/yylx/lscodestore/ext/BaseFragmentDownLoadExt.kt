@@ -1,4 +1,4 @@
-package ls.yylx.lscodestore.base.ext
+package ls.yylx.lscodestore.ext
 
 import android.content.Intent
 import android.net.Uri

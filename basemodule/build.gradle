@@ -48,8 +48,7 @@ dependencies {
 
     api(Kt.kt, Kt.kt_jdk8, Kt.coroutines)
 
-
-    api(Other.rxffmpeg)
+    api(Other.mobile_ffmpeg)
 
     api(
             Anko.anko,

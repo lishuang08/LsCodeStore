@@ -1,4 +1,4 @@
-package ls.yylx.lscodestore.base.ext
+package ls.yylx.lscodestore.ext
 
 import android.app.NotificationChannel
 import android.app.NotificationManager
@@ -15,7 +15,7 @@ fun MainActivity.showNotification(push: MainActivity.PushResults) {
     val last = MMKV.defaultMMKV().getInt("lastCount", 0)
     val lastTitle = MMKV.defaultMMKV().getString("lastTitle", "")
 
-    if (NotificationManagerCompat.from(this )
+    if (NotificationManagerCompat.from(this)
             .areNotificationsEnabled()
     ) {
         if (last == 0 && lastTitle != push.title) {
@@ -30,12 +30,12 @@ fun MainActivity.showNotification(push: MainActivity.PushResults) {
                 .setAutoCancel(true)
                 .setPriority(NotificationCompat.PRIORITY_DEFAULT)
                 .apply {
-                    val startIntent = navController
-                        .createDeepLink()
-                        .setDestination(R.id.x5WebViewFragment)
-                        .createPendingIntent()
+//                    val startIntent = navController
+//                        .createDeepLink()
+//                        .setDestination(R.id.x5WebViewFragment)
+//                        .createPendingIntent()
 
-                    setContentIntent(startIntent)
+//                    setContentIntent(startIntent)
                 }
             if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
                 val channel = NotificationChannel(

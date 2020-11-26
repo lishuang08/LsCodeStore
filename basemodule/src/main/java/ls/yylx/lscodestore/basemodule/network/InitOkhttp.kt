@@ -7,6 +7,8 @@ import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
+import org.json.JSONObject
+import java.nio.charset.StandardCharsets
 
 
 /**
@@ -73,7 +75,23 @@ object InitOkhttp {
 
 
                 .build()
-            return chain.proceed(request)
+
+            val response = chain.proceed(request)
+
+            val charset = StandardCharsets.UTF_8
+            val str = response.body?.source()?.buffer?.clone()?.readString(charset)
+            val newResponse = try {
+                val json = JSONObject(str)
+                if (json.getString("code") == "-2333") {
+                    response.newBuilder().code(2333).build()
+                } else {
+                    response
+                }
+            } catch (e: Exception) {
+                response
+            }
+
+            return newResponse
 
         }
     }

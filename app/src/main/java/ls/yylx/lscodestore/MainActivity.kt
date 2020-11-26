@@ -12,11 +12,13 @@ import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.MainScope
 import ls.yylx.lscodestore.basemodule.PermissionManager
 import ls.yylx.lscodestore.viewmodel.GbifViewModel
+import ls.yylx.lscodestore.viewmodel.Http3ViewModel
 import java.nio.charset.Charset
 
 
 class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
     val gbifVm by viewModels<GbifViewModel>()
+    val http3Vm  by viewModels<Http3ViewModel>()
 
 
     val navController by lazy {
@@ -45,7 +47,8 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
             }
         }
 
-        gbifVm.updateSpecies()
+//        gbifVm.updateSpecies()
+//        http3Vm.http3()
 
 //        if (resources.getBoolean(R.bool.isModule)) {
 //            setContentView(R.layout.main_activity_relase)

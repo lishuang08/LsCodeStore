@@ -9,9 +9,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.OnBackPressedCallback
+import androidx.appcompat.widget.AppCompatImageView
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.ScrollableColumn
 import androidx.compose.foundation.Text
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Button
@@ -25,10 +26,12 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.ComposeView
 import androidx.compose.ui.res.vectorResource
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.viewinterop.AndroidView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import androidx.navigation.navGraphViewModels
 import androidx.ui.tooling.preview.Preview
 import com.huawei.hms.hmsscankit.ScanUtil
 import com.huawei.hms.ml.scan.HmsScan
@@ -43,7 +46,12 @@ import ls.yylx.lscodestore.basemodule.checkArrayPermissions
 import ls.yylx.lscodestore.firstmodule.ChoiceImageData
 import ls.yylx.lscodestore.secondmodule.main.mainPage
 import ls.yylx.lscodestore.secondmodule.theme.JetpackTheme
+import ls.yylx.lsmediaeditor.CameraViewFragment
+import org.jetbrains.anko.find
+import org.jetbrains.anko.include
+import org.jetbrains.anko.support.v4.UI
 import org.jetbrains.anko.support.v4.toast
+import org.jetbrains.anko.verticalLayout
 
 
 class MainFragment : Fragment(), CoroutineScope by MainScope() {
@@ -54,10 +62,10 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
     val sparseArray = SparseArray<String>()
 
     val list by lazy(LazyThreadSafetyMode.NONE) {
-        listOf("查看", "CoordinatorLayout", "flutter", "anko", "jetpack_compose", "xml", "hadrcode")
+        listOf("hms-scan", "ffmpeg", "camerax_view", "flutter", "anko", "jetpack_compose", "xml", "hadrcode")
     }
 
-    val mainVm by navGraphViewModels<MainViewModel>(R.navigation.main_navigation)
+    val mainVm by viewModels <MainViewModel>( )
 
 //    val mainVm by viewModels<MainViewModel> ()
 
@@ -155,13 +163,13 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
             ) {
                 when (state) {
                     0 -> {
-                        Column(modifier = Modifier.padding(16.dp)) {
+                        ScrollableColumn(modifier = Modifier.padding(16.dp)) {
                             list.forEach {
                                 Button(
                                     modifier = Modifier.padding(16.dp).fillMaxWidth(),
                                     onClick = {
                                         when (it) {
-                                            "查看" -> {
+                                            "hms-scan" -> {
                                                 checkArrayPermissions(arrayOf(Manifest.permission.CAMERA)) {
                                                     if (it) {
 
@@ -193,8 +201,14 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                                                 }
 
                                             }
-                                            "CoordinatorLayout" -> {
-                                                findNavController().navigate(R.id.action_mainFragment_to_coordinatorLayoutFragment)
+
+                                            "camerax_view" ->{
+                                                CameraViewFragment().show(childFragmentManager,null )
+
+                                            }
+                                            "ffmpeg" -> {
+//                                                CameraRecordFragment().show(childFragmentManager,null )
+                                                findNavController().navigate(R.id.action_mainFragment_to_ffmpegFragment)
                                             }
                                             "flutter" -> {
                                                 startActivity(
@@ -231,6 +245,17 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
                                     },
                                     content = { Text(text = it) })
                             }
+                            AndroidView(viewBlock ={
+                               UI{
+                                   verticalLayout {
+                                       include<ConstraintLayout>(R.layout.test_shape).run {
+                                           find<AppCompatImageView>(R.id.aiv_test).clipToOutline = true
+                                       }
+                                   }
+
+
+                               }.view
+                            }, modifier = Modifier.padding(16.dp) )
                         }
                     }
                     1 -> {
@@ -258,6 +283,7 @@ class MainFragment : Fragment(), CoroutineScope by MainScope() {
             viewLifecycleOwner,  // LifecycleOwner
             backCallBack
         )
+
     }
 
     val backCallBack = object : OnBackPressedCallback(

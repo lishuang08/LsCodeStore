@@ -65,7 +65,7 @@ object Androidx {
     val media2_player =
         "androidx.media2:media2-player:$media2_version"   // optional - Implementation of a SessionPlayer
 
-    val material = "com.google.android.material:material:1.2.1"
+    val material = "com.google.android.material:material:1.3.0-alpha03"
 
     val nav_version = "2.3.0"
     val nav_fragment = "androidx.navigation:navigation-fragment-ktx:${nav_version}"

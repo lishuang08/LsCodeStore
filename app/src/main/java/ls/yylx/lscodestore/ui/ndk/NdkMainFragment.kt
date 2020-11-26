@@ -15,14 +15,14 @@ class NdkMainFragment : Fragment() {
         // Used to load the 'native-lib' library on application startup.
         init {
             System.loadLibrary("native-lib")
-            System.loadLibrary("oboe_code")
+//            System.loadLibrary("oboe_code")
 
         }
     }
     external fun stringFromJNI(): String
 
 
-    external fun playAudioFromJNI(): String
+//    external fun playAudioFromJNI(): String
 
 
     private lateinit var viewModel: NdkMainViewModel

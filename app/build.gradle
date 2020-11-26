@@ -1,4 +1,6 @@
-import ls.yylx.lscodestore.plugin.*
+import ls.yylx.lscodestore.plugin.Hms
+import ls.yylx.lscodestore.plugin.Other
+import ls.yylx.lscodestore.plugin.Versions
 
 plugins {
     id "com.android.application"
@@ -50,7 +52,7 @@ android {
             proguardFiles getDefaultProguardFile("proguard-android-optimize.txt"), "proguard-rules.pro"
             ndk {
                 //目前已支持 "armeabi-v7a","arm64-v8a","x86","x86_64" 平台架构
-                abiFilters "armeabi-v7a","arm64-v8a"
+                abiFilters "armeabi-v7a", "arm64-v8a", "x86_64"
             }
 
         }
@@ -73,17 +75,19 @@ android {
         }
     }
     /**oboe*/
-    buildFeatures {
-        prefab true
+//    buildFeatures {
+//        prefab true
+//    }
+
+    packagingOptions {
+        merge 'META-INF/AL2.0'
+        merge 'META-INF/LGPL2.1'
     }
 
 
     compileOptions {
-        sourceCompatibility = "1.8"
-        targetCompatibility = "1.8"
-    }
-    kotlinOptions {
-        jvmTarget = "1.8"
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
 
     externalNativeBuild {
@@ -92,7 +96,7 @@ android {
             version "3.10.2"
         }
     }
-   
+
     /**加快编译速度*/
     tasks.whenTaskAdded { task ->
         if (task.name.contains("lint")
@@ -130,19 +134,23 @@ android {
     buildFeatures {
         compose true
     }
+    kotlinOptions {
+        jvmTarget = "1.8"
+        useIR = true
+    }
     composeOptions {
         kotlinCompilerVersion Versions.kotlin_version
         kotlinCompilerExtensionVersion Versions.compose_version
 
-    }
 
-}
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "1.8"
-        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
     }
 }
+//tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+//    kotlinOptions {
+//        jvmTarget = "1.8"
+//        freeCompilerArgs += ["-Xallow-jvm-ir-dependencies", "-Xskip-prerelease-check"]
+//    }
+//}
 
 dependencies {
     implementation project(":basemodule")
@@ -150,14 +158,18 @@ dependencies {
     implementation project(':composemodule')
     implementation project(":flutter")
 
+    implementation project(":LsMediaEditor")
 
-//
+
+    implementation 'com.google.android.gms:play-services-cronet:17.0.0'
+
+
 //     implementation(Other.ffmpeg,
 //            Other.opencv,
 //            Other.oboe
 //    )
 
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
+//    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.5'
 //    debugImplementation "com.didichuxing.doraemonkit:doraemonkit:3.1.8"
 //    releaseImplementation "com.didichuxing.doraemonkit:doraemonkit-no-op:3.1.8"
 
@@ -171,3 +183,5 @@ dependencies {
     androidTestImplementation "androidx.test.espresso:espresso-core:3.3.0"
 
 }
+
+

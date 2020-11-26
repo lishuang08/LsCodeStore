@@ -12,18 +12,11 @@
         <action
             android:id="@+id/action_mainFragment_to_first_navigation"
             app:destination="@id/first_navigation" />
-        <action
-            android:id="@+id/action_mainFragment_to_x5WebViewFragment"
-            app:destination="@id/x5WebViewFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_coordinatorLayoutFragment"
-            app:destination="@id/coordinatorLayoutFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_motionLayoutFragment"
             app:destination="@id/motionLayoutFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_customFragment"
-            app:destination="@id/customFragment" />
+
         <action
             android:id="@+id/action_mainFragment_to_composeMainActivity"
             app:destination="@id/composeMainActivity" />
@@ -36,27 +29,23 @@
         <action
             android:id="@+id/action_mainFragment_to_cameraxFragment"
             app:destination="@id/cameraxFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_nav_test"
+            app:destination="@id/nav_test" />
+        <action
+            android:id="@+id/action_mainFragment_to_ffmpegFragment"
+            app:destination="@id/ffmpegFragment" />
     </fragment>
 
 
     <include app:graph="@navigation/first_navigation" />
-    <fragment
-        android:id="@+id/x5WebViewFragment"
-        android:name="ls.yylx.lscodestore.webview.X5WebViewFragment"
-        android:label="X5WebViewFragment" />
 
-    <fragment
-        android:id="@+id/coordinatorLayoutFragment"
-        android:name="ls.yylx.lscodestore.ui.main.CoordinatorLayoutFragment"
-        android:label="CoordinatorLayoutFragment" />
+
     <fragment
         android:id="@+id/motionLayoutFragment"
         android:name="ls.yylx.lscodestore.ui.main.MotionLayoutFragment"
         android:label="MotionLayoutFragment" />
-    <fragment
-        android:id="@+id/customFragment"
-        android:name="ls.yylx.lscodestore.ui.main.CustomFragment"
-        android:label="CustomFragment" />
+
     <activity
         android:id="@+id/composeMainActivity"
         android:name="ls.yylx.lscodestore.secondmodule.main.ComposeMainActivity"
@@ -73,4 +62,9 @@
         android:id="@+id/cameraxFragment"
         android:name="ls.yylx.lscodestore.qrcode.CameraxFragment"
         android:label="CameraxFragment" />
+    <include app:graph="@navigation/nav_test" />
+    <fragment
+        android:id="@+id/ffmpegFragment"
+        android:name="ls.yylx.lscodestore.ffmpeg.FfmpegFragment"
+        android:label="FfmpegFragment" />
 </navigation>

@@ -7,4 +7,6 @@ class MainViewModel : ViewModel() {
 
     var value = 0
 
+
+
 }

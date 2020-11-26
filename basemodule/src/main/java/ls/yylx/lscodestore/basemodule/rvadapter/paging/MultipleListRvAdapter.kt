@@ -6,7 +6,6 @@ import android.view.Gravity
 import android.view.View
 import android.view.ViewGroup
 import android.widget.LinearLayout
-import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -19,6 +18,7 @@ import com.google.gson.reflect.TypeToken
 import com.orhanobut.logger.Logger
 import ls.yylx.lscodestore.basemodule.R
 import org.jetbrains.anko.*
+
 
 //private val diffCallback = object : DiffUtil.ItemCallback<MainItem>() {
 //    override fun areItemsTheSame(oldItem: MainItem, newItem: MainItem): Boolean =
@@ -124,10 +124,8 @@ class MultipleListRvAdapter : ListAdapter<MainItem, RecyclerView.ViewHolder>(mai
         @SuppressLint("SetTextI18n")
         fun bindTo(item: HotServiceItem?) {
             Logger.e("item  HotServiceItem ")
-
         }
     }
-
 
     inner class viewType0 : AnkoComponent<View> {
         override fun createView(ui: AnkoContext<View>) =

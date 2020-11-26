@@ -2,10 +2,10 @@ package ls.yylx.lscodestore.plugin
 
 
 object Other {
-    val ffmpeg = "com.arthenica:mobile-ffmpeg-full:4.3.2"
+    val mobile_ffmpeg = "com.arthenica:mobile-ffmpeg-full-gpl:4.4"
+
     val opencv = "com.quickbirdstudios:opencv:4.1.0-contrib"
     val oboe = "com.google.oboe:oboe:1.4.3" //oboe 低延迟音频ndk
-
 
     val circleimageview = "de.hdodenhof:circleimageview:3.1.0" //圆形图片库
     val photoview = "com.github.chrisbanes:PhotoView:2.3.0" //图片缩放

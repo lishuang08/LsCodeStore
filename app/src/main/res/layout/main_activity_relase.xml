@@ -21,6 +21,7 @@
         android:id="@+id/nav_view"
         android:layout_width="match_parent"
         android:layout_height="56dp"
+        android:visibility="gone"
         android:background="?android:attr/windowBackground"
         app:itemIconSize="20dp"
         app:labelVisibilityMode="labeled"
