@@ -25,9 +25,9 @@ class Http3ViewModel(app:Application) :AndroidViewModel(app ){
 
         val requestBuilder = cronetEngine.newUrlRequestBuilder(
             "https://www.baidu.com",
-            object : UrlRequest.Callback(){
+            object : org.chromium.net.UrlRequest.Callback(){
                 override fun onRedirectReceived(
-                    request: UrlRequest?,
+                    request: org.chromium.net.UrlRequest?,
                     info: UrlResponseInfo?,
                     newLocationUrl: String?
                 ) {

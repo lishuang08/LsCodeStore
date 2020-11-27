@@ -1,7 +1,6 @@
 package ls.yylx.lscodestore
 
 import android.os.Bundle
-import android.os.Looper
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.biometric.BiometricPrompt
@@ -37,15 +36,15 @@ class MainActivity : AppCompatActivity(), CoroutineScope by MainScope() {
 
 
         var start = true
-        Looper.getMainLooper().setMessageLogging {
-            if (start) {
-                println("start$it")
-                start = false
-            } else {
-                println("end$it")
-                start = true
-            }
-        }
+//        Looper.getMainLooper().setMessageLogging {
+//            if (start) {
+//                println("start$it")
+//                start = false
+//            } else {
+//                println("end$it")
+//                start = true
+//            }
+//        }
 
 //        gbifVm.updateSpecies()
 //        http3Vm.http3()

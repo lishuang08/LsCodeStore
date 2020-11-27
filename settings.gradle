@@ -3,6 +3,8 @@ include ':composemodule'
 include ":ankomodule"
 include ":app"
 include ":flutter_module"
+include ':lsMediaEditor'
+
 //include ":version_plugins"
 
 includeBuild("./LsComposingBuild")
@@ -18,4 +20,4 @@ evaluate(new File(
 ))
 
 
-include ':LsMediaEditor'
+
